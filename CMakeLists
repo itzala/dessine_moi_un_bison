@@ -1,0 +1,5 @@
+cmake_mininum_required (VERSION 2.6)
+
+project(Dessine-moi un bison)
+
+add_executable(dessine_bison dessine_bison.c)
