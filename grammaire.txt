@@ -1,0 +1,12 @@
+// Pour la commande draw Cartesien -- Cartesien
+// Les espaces, c'est juste pour que ça soit lisible :)
+
+S --> M $
+M --> draw A
+M -> epsi
+A --> ( E ) N
+E --> digit E' digit
+E' --> :
+E' --> ,
+N --> sep A
+N --> epsi
