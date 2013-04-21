@@ -1,4 +1,5 @@
-// Pour la commande draw Cartesien -- Cartesien
+// Pour la commande draw (Point -- Point){1,}
+// Point représente des coordonnées polaires ou cartésiennes en dur (donc non calculées par des expressions)
 // Les espaces, c'est juste pour que ça soit lisible :)
 
 S --> M $
@@ -10,3 +11,42 @@ E' --> :
 E' --> ,
 N --> sep A
 N --> epsi
+
+
+/* => seul ce qui change est reporté */
+
+// Pour la commande draw (Point -- Point)
+// Point représente des coordonnées polaires ou cartésiennes calculées via des expressions
+
+E --> X E' X
+X --> digit
+X --> (X O X)
+O --> +
+O --> /
+O --> *
+O --> -
+
+
+// Pour la commande draw (Point -- +Point){1,} => les coordonnées relatives
+
+A --> T ( E ) N
+T --> +
+T --> epsi
+
+
+// Pour la commande draw (Point -- Point -- cycle) => pour gérer les cycles
+
+N --> sep C A
+C --> cycle N
+C --> epsi
+
+
+// Pour la commande fill
+
+M --> fill A
+
+
+// Pour la commande image
+
+M --> image { D }
+D --> 
