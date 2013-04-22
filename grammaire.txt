@@ -60,13 +60,14 @@ I --> epsi
 
 // Ne gère pas les multiples instructions !
 
-S --> M $
-M --> I | image { I };
-I --> draw A; | fill A; | epsi
-A --> ( P ) N
-P --> E E' E
-E --> digit E" | ( digit E" )
+S  --> M $
+M  --> I | image { I };
+I  --> draw A; | fill A; | epsi
+A  --> ( P ) N
+P  --> E E' E
+E  --> digit E" | ( digit E" )
 E" --> O E | epsi
-O --> * | + | * | /
-N --> sep R
-R --> +A | A | cycle N
+O  --> * | + | * | /
+N  --> sep R | epsi
+R  --> +A | A | cycle N
+E' --> : | ,
