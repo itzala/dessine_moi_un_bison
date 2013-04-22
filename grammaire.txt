@@ -2,6 +2,8 @@
 // Point représente des coordonnées polaires ou cartésiennes en dur (donc non calculées par des expressions)
 // Les espaces, c'est juste pour que ça soit lisible :)
 
+/* Arbre de dérivation : ok */
+
 S --> M $
 M --> draw A
 M -> epsi
@@ -18,35 +20,53 @@ N --> epsi
 // Pour la commande draw (Point -- Point)
 // Point représente des coordonnées polaires ou cartésiennes calculées via des expressions
 
-E --> X E' X
-X --> digit
-X --> (X O X)
-O --> +
-O --> /
-O --> *
-O --> -
+/* Arbre de dérivation : ok */
+
+A --> ( P ) N
+P --> E E' E
+E --> digit E"
+E --> ( digit E" )
+E" --> O E
+E" --> epsi
+O --> + | * | - | /
 
 
 // Pour la commande draw (Point -- +Point){1,} => les coordonnées relatives
 
-A --> T ( E ) N
-T --> +
-T --> epsi
+/* Arbre de dérivation : ok */
+
+N --> sep R
+R --> + A
+R --> A
 
 
 // Pour la commande draw (Point -- Point -- cycle) => pour gérer les cycles
 
-N --> sep C A
-C --> cycle N
-C --> epsi
+R --> cycle N
 
+// Pour les commandes fill, draw, image
 
-// Pour la commande fill
+/* Arbre de dérivation : ok */
 
-M --> fill A
+M --> I
+M --> image { I }
+I --> draw A
+I --> fill A
+I --> epsi
 
+//Grammaire globale => permet de reconnaitre toutes les commandes à implémenter
 
-// Pour la commande image
+/* A TESTER DANS LA PRATIQUE */
 
-M --> image { D }
-D --> 
+// Ne gère pas les multiples instructions !
+
+S --> M $
+M --> I | image { I };
+I --> draw A; | fill A; | epsi
+A --> ( P ) N
+P --> E E' E
+E --> digit E" | ( digit E" )
+E" --> O E | epsi
+O --> * | + | * | /
+N --> sep R
+R --> +A | A | cycle N
