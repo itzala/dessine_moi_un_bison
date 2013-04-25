@@ -1,4 +1,5 @@
-src/build/*
+CMake*
+!CMakeLists.txt
 *.sublime-*
 *~
 

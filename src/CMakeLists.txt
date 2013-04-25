@@ -41,3 +41,6 @@ add_executable(
 
 # On lie les librairies
 target_link_libraries(dessineBison ${GTK3_LIBRARIES})
+
+add_subdirectory(tests)
+add_subdirectory(includes)
