@@ -1,10 +1,11 @@
 %{
-#include <dubla.tab.h>
+#include "../bison/dubla.tab.h"
 %}
 
 %%
 
-[[:digit:]] {/*Transformer le string en int*/ return DIGIT;}
+[[:digit:]] {yylval = atoi(yytext);
+			return DIGIT;}
 "."		{return POINT;}
 
 "{"		{return OPEN;}

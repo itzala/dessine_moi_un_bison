@@ -6,7 +6,7 @@ void error(){
 	yyerror();
 }
 %}
-%TOKEN IMG DRAW FILL DOUBLE COMMA POINT SEP_C PLUS DIV MINUS PROD CYCLE DIGIT OPEN CLOSE TERM
+%token IMG DRAW FILL DOUBLE COMMA POINT SEP_C PLUS DIV MINUS PROD CYCLE DIGIT OPEN CLOSE TERM
 
 %%
 
@@ -19,15 +19,17 @@ instruction:	DRAW arguments TERM
 				| FILL arguments TERM
 				| {}
 				;
-arguments:	(point)suivant
+arguments:	 "("point")"suivant
 			;
 point :	expression sep_expr expression
 			;
-sep_expr :	:
-			| ,
+sep_expr :	":"
+			| ","
 			;
 expression :	DIGIT
-				|( DIGIT )
+				| "(" DIGIT ")"
+				| MINUS DIGIT
+				| "(" MINUS DIGIT ")"
 				;
 suivant :	DOUBLE boucle
 			| COMMA boucle
@@ -48,7 +50,7 @@ E" --> 0 E | epsi
 
 règles à modifier
 
-E --> digit E" | ( digit E" )
+E --> digit E" | "(" digit E" ")"
 
 */
 
