@@ -1,10 +1,9 @@
-#include "polar_point.h"
+#include "polaire_point.h"
 
 struct polaire {
 	double angle;
 	double module;
 };
-
 
 
 Polaire creer_polaire(double angle, double module){
@@ -35,12 +34,4 @@ double get_angle_polaire(Polaire p){
 
 double get_module_polaire(Polaire p){
 	return p->module;
-}
-
-Polaire cartesien_vers_polaire(Cartesien p){
-	double x = get_abscisse_cartesien(p);
-	double y = get_ordonnee_cartesien(p);
-	double sqrt_x2_y2 = sqrt((x*x)+(y*y));
-	return creer_polaire(2 * atan(y / (x + sqrt_x2_y2)),
-						sqrt_x2_y2);
 }

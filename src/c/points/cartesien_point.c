@@ -1,7 +1,6 @@
 #include "cartesien_point.h"
 
-struct cartesien
-{
+struct cartesien {
 	double x;
 	double y;
 };
@@ -40,4 +39,13 @@ Cartesien polaire_vers_cartesien(Polaire p){
 	double x = mod * cos(ang);
 	double y = mod * sin(ang);
 	return creer_cartesien(x,y);
+}
+
+
+Polaire cartesien_vers_polaire(Cartesien p){
+	double x = get_abscisse_cartesien(p);
+	double y = get_ordonnee_cartesien(p);
+	double sqrt_x2_y2 = sqrt((x*x)+(y*y));
+	return creer_polaire(2 * atan(y / (x + sqrt_x2_y2)),
+						sqrt_x2_y2);
 }
