@@ -1,5 +1,5 @@
 #include "image.h"
-
+#include "chemin.h"
 
 Chemin creer_chemin_test(int argc, char** argv){	
 	int x, y, nb, largeur, couleur;
@@ -17,22 +17,20 @@ Chemin creer_chemin_test(int argc, char** argv){
 		largeur = atoi(argv[4]);
 		couleur = atoi(argv[5]);
 	}
+	
+	Point p1 = NULL;
 	ListePoints lp = creer_liste_points();
-
-	Point p1 = creer_point(x, y);
-
-	ListePoints lp = creer_liste_points();
+	
 	for(int i=0 ; i<nb ; i++){
+		p1 = creer_point(x,y);
 		liste_points_ajouterPoint(lp, p1);
 		detruire_point(p1);
 		x *= 2;
 		y *= 2;
-		p1 = creer_point(x,y);
 	}
 	Chemin c1 = creer_chemin(lp, largeur, couleur);
 	return c1;
 }
-
 
 int main(int argc, char const *argv[])
 {
@@ -50,12 +48,18 @@ int main(int argc, char const *argv[])
 	}
 	Image img = creer_image();
 	printf("%s\n", imageToString(img));
+	Chemin c1 = NULL;
 	for(int i=0 ; i<nb_chemins ; i++){
-		ajouter_chemin(img, creer_chemin_test(argc, argv));
+		c1 = creer_chemin_test(argc, argv)
+		ajouter_chemin(img, c1);
+		detruire_chemin(c1);
 	}
 	printf("%s\n", imageToString(img));
+	Image clone = clone_image(img);
+	printf("Clone d'image : %s\n", imageToString(clone));
+
+	detruire_image(img);
+	detruire_image(clone);
 	
-
-
-	return 0;
+	return EXIT_SUCCESS;
 }
