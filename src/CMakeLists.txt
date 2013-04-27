@@ -15,8 +15,10 @@ pkg_check_modules(
 	gtk+-3.0)
 # On ajoute les dossiers et définitions de GTK+
 include_directories(
-	${GTK3_INCLUDE_DIRS} 
+	${GTK3_INCLUDE_DIRS}
 	${DESSINE_BISON_SOURCE_DIR}/includes
+	${DESSINE_BISON_SOURCE_DIR}/includes/points
+	${DESSINE_BISON_SOURCE_DIR}/includes/listes
 )
 
 link_directories(${GTK3_LIBRARY_DIRS})
@@ -31,6 +33,8 @@ file(
 	source_files_exec
 	${DESSINE_BISON_SOURCE_DIR}/c/*
 )
+
+ADD_DEFINITIONS(-std=c99 -g -Wall)
 
 
 add_executable(
