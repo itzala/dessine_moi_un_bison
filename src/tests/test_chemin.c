@@ -34,7 +34,8 @@ int main(int argc, char const *argv[])
 		p1 = creer_point(x,y);
 	}
 	Chemin c1 = creer_chemin(lp, largeur, couleur);
-	
+	cheminToString(c1);
+	detruire_chemin(c1);
 	detruire_liste_points(lp);
 	return 0;
 }
