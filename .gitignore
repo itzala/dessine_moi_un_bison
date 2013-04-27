@@ -2,6 +2,7 @@ CMake*
 !CMakeLists.txt
 *.sublime-*
 *~
+build/*
 
 
 # Object files
