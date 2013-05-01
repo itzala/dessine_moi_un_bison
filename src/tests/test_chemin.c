@@ -35,7 +35,7 @@ int main(int argc, char const *argv[])
 		y *= 2;
 		p1 = creer_point(x,y);
 	}
-	toStringChemin(c1);
+	printf("%s\n", toStringChemin(c1));
 
 
 

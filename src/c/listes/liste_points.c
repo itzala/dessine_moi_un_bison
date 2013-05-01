@@ -30,6 +30,14 @@ void detruire_liste_points(ListePoints l){
 	free(l);
 }
 
+ListePoints clone_liste_points(ListePoints l){
+	ListePoints cp = creer_liste_points();
+	for (int i = 0 ; i<l->nb ; i++){
+		ajouter_point_liste(cp, get_point_indice(l, i));
+	}
+	return cp;
+}
+
 Point get_point_tete(ListePoints l){
 	if(! est_vide_liste_points(l)){
 		return l->tab[0];
@@ -68,10 +76,26 @@ bool est_vide_liste_points(ListePoints l){
 	return l->nb < 1;
 }
 
-void listePointsToString(ListePoints l){
-	printf("%s", toStringPoint((Point) l->tab[0]));
-	for(int i=1 ; i< l->nb ; i++){
-		printf(" , %s", toStringPoint(l->tab[i]));
+char* listePointsToString(ListePoints l){
+	int taille = 50;
+	int taille_ini = 50;
+	char* res = malloc(sizeof(char)*taille);
+	char* buffer = malloc(sizeof(char)*taille);
+	int new_taille = sprintf(buffer, "%s", toStringPoint(l->tab[0]));
+	for(int i=0 ; i< l->nb ; i++){
+
+		while(new_taille > taille){
+			taille *= 2;
+			if(new_taille < taille){
+				taille_ini += taille;
+				res = realloc(res, taille_ini*sizeof(char));
+			}
+		}
+
+		strncat(res, buffer, new_taille);
+		taille -= new_taille;
+		new_taille = sprintf(buffer, ", %s", toStringPoint(l->tab[i]));
 	}
-	printf("\n");
+	free(buffer);
+	return res;
 }

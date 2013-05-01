@@ -27,7 +27,7 @@ int main(int argc, char const *argv[])
 		x *= 2;
 		y *= 2;
 	}
-	listePointsToString(lp);
+	printf("%s\n", listePointsToString(lp));
 	detruire_liste_points(lp);
 	return EXIT_SUCCESS;
 }

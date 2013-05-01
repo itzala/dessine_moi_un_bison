@@ -68,7 +68,7 @@ Chemin clone(Chemin c){
 }
 
 char* toStringChemin(Chemin c){
-	char buffer[50];
+	char* buffer = malloc(sizeof(char)*50);
 	sprintf(buffer, "Chemin : epaisseur=%d, couleur=%d", (int) get_epaisseur(c), get_couleur(c));
 	return buffer;
 }
