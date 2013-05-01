@@ -4,31 +4,50 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-ListePoints creer_liste_points_test(int argc, char** argv){
-	int x, y, nb;
+ListePoints creer_liste_points_test(int x, int y, int nb)
+{
+	Point p1 = creer_point(x, y);
+	ListePoints lp = creer_liste_points();
+	for(int i=0 ; i<nb ; i++){
+		ajouter_point_liste(lp, p1);
+		detruire_point(p1);
+		x *= 2;
+		y *= 2;
+		p1 = creer_point(x,y);
+	}
+	return lp;
+}
+
+Chemin creer_chemin_test(int argc, char** argv, int multi)
+{
+	int x, y, nb, largeur, couleur;
 	if(argc < 2){
 		x = 1;
 		y = 1;
-		nb = 12;
+		nb = 10;
+		largeur = 1;
+		couleur = 0;
 	}
-	else if(argc == 4){
-		x = atoi(argv[1]);
-		y = atoi(argv[2]);
+	else if(argc == 6){
+		x = atoi(argv[1]) * multi;
+		y = atoi(argv[2]) * multi;
 		nb = atoi(argv[3]);
+		largeur = atoi(argv[4]);
+		couleur = atoi(argv[5]);
 	}
-	else{
-		printf("Erreur : nombre de paramètres invalide\n");
-		return EXIT_FAILURE;
-	}
+	ListePoints lp = creer_liste_points_test(x, y, nb);
 
-	ListePoints lp = creer_liste_points();
-	for(int i=0 ; i<nb ; i++){
-		ajouter_point_liste(lp, creer_point(x, y));
-		x *= 2;
-		y *= 2;
-	}
-	return lp;
+	Chemin c = creer_chemin(largeur, couleur);
+	//Chemin c = creer_chemin(lp, largeur, couleur); A voir avec l'ajout des points ci dessous
+	Point* liste = get_points(lp);
+	int nb_points = get_nb_points(lp);
+	for (int i = 0; i < nb_points; i++)
+		ajouter_point_chemin(c, liste[i]);
 
+	detruire_liste_point(lp);
+	detruire_chemin(c);
+
+	return c;
 }
 
 int main(int argc, char const *argv[])
@@ -45,11 +64,15 @@ int main(int argc, char const *argv[])
 		return EXIT_FAILURE;
 	}
 
-	ListePoints lp = creer_liste_chemins();
-	for(int i=0 ; i<nb ; i++){
-		ajouter_chemin_liste(lp, creer_chemin());
+	ListeChemins lc = creer_liste_chemins();
+	Chemin c = NULL;
+	for(int i=0 ; i<nb ; i++)
+	{
+		c = creer_chemin_test(argc, argv, (i + 1));
+		ajouter_chemin_liste(lc, c);
+		detruire_chemin(c);
 	}
-	listeCheminsToString(lp);
-	detruire_liste_chemins(lp);
+	listeCheminsToString(lc);
+	detruire_liste_chemins(lc);
 	return EXIT_SUCCESS;
 }

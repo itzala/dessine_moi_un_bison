@@ -42,6 +42,11 @@
 // 	free(li);
 // }
 
+// int get_nb_images(ListeImages li)
+// {
+// 	return li->nb;
+// }
+
 // ListeImages ajouter_image(ListeImages li, Image img)
 // {
 // 	if (est_pleine(li))
