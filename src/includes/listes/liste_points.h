@@ -14,6 +14,7 @@ ListePoints clone_liste_points(ListePoints l);
 Point get_point_tete(ListePoints l);
 Point get_point_indice(ListePoints l, int indice);
 Point* get_points(ListePoints l);
+int get_nb_points(ListePoints l);
 
 ListePoints ajouter_point_liste(ListePoints l, Point p);
 
