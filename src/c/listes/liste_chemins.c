@@ -70,6 +70,11 @@ bool est_vide_liste_chemins(ListeChemins l){
 	return l->nb < 1;
 }
 
+int get_nb_chemins(ListeChemins l)
+{
+	return l->nb;
+}
+
 void listeCheminsToString(ListeChemins l){
 	printf("%s", toStringChemin(l->tab[0]));
 	for(int i=1 ; i< l->nb ; i++){
