@@ -19,6 +19,7 @@ include_directories(
 	${DESSINE_BISON_SOURCE_DIR}/includes
 	${DESSINE_BISON_SOURCE_DIR}/includes/points
 	${DESSINE_BISON_SOURCE_DIR}/includes/listes
+	${DESSINE_BISON_SOURCE_DIR}/includes/images
 )
 
 link_directories(${GTK3_LIBRARY_DIRS})

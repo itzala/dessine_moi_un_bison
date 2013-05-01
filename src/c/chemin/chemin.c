@@ -1,47 +1,74 @@
-// #include <stdlib.h>
-// #include <stdio.h>
+#include "chemin.h"
 
-// #include <cairo.h>
-// #include <cairo-pdf.h>
+struct chemin
+{
+	ListePoints tab;
+	double epaisseur;
+	int couleur;
+};
 
-// #include "segment.h"
-// #include "chemin.h"
+Chemin creer_chemin(double epaisseur, int couleur){
+	Chemin c = (Chemin) malloc(sizeof(struct chemin));
+	c->tab = creer_liste_points();
+	c->epaisseur = epaisseur;
+	c->couleur = couleur;
+	return c;
+}
 
-// #define MAX_TRAITS 50
+void detruire_chemin(Chemin c){
+	detruire_liste_points(c->tab);
+	free(c);
+}
 
-// struct chemin
-// {
-// 	Segment* liste_traits;
-// 	int nb_trait;
-// };
 
-// Chemin creer_chemin()
-// {
-// 	Chemin c = malloc(sizeof(struc chemin));
-// 	c->nb_trait = 0;
-// 	c->liste_traits = malloc(sizeof(Segment*));
+Point* get_points_chemin(Chemin c){
+	return get_points(c->tab);
+}
 
-// 	return c;
+Point get_point_indice_chemin(Chemin c, int indice){
+	return get_point_indice(c->tab, indice);
+}
+
+double get_epaisseur(Chemin c){
+	return c->epaisseur;
+}
+
+int get_couleur(Chemin c){
+	return c->couleur;
+}
+
+
+// Chemin set_points(Chemin c, Point* l){
+
 // }
 
-// Chemin detruire_chemin(Chemin c)
-// {
-// 	free(c);
-// }
+Chemin set_epaisseur(Chemin c, double epaisseur){
+	c->epaisseur = epaisseur;
+	return c;
+}
 
-// Chemin ajouter_trait(Chemin c, Trait t)
-// {
+Chemin set_couleur(Chemin c, int couleur){
+	c->couleur = couleur;
+	return c;
+}
 
 
-// 	return c;
-// }
 
-// Chemin dessiner_chemin(Chemin c, cairo_t contexte)
-// {
-// 	for (int i = 0; i < c->nb_trait; i++)
-// 	{
-// 		dessiner_trait(c->liste_traits[i], contexte, i);
-// 	}
 
-// 	return c;
-// }
+Chemin ajouter_point_chemin(Chemin c, Point p){
+	ajouter_point_liste(c->tab, p);
+	return c;
+}
+
+
+Chemin clone(Chemin c){
+	Chemin copy = creer_chemin(get_epaisseur(c), get_couleur(c));
+	// set_points(Chemin c, Point* l);
+	return copy;
+}
+
+char* toStringChemin(Chemin c){
+	char buffer[50];
+	sprintf(buffer, "Chemin : epaisseur=%d, couleur=%d", (int) get_epaisseur(c), get_couleur(c));
+	return buffer;
+}

@@ -1,4 +1,5 @@
 #include "liste_points.h"
+#include "point.h"
 
 struct liste_points
 {
@@ -11,7 +12,7 @@ bool est_pleine(ListePoints l){
 	return l->nb >= l->max;
 }
 
-void rallonger(ListePoints l){
+void rallonger_liste_chemins(ListePoints l){
 	l->max *= 2;
 	l->tab = (Point*) realloc(l->tab, sizeof(Point)*l->max);
 }
@@ -56,7 +57,7 @@ Point* get_points(ListePoints l){
 
 ListePoints ajouter_point_liste(ListePoints l, Point p){
 	if(est_pleine(l)){
-		rallonger(l);
+		rallonger_liste_chemins(l);
 	}
 	l->tab[l->nb] = p;
 	l->nb++;
@@ -68,7 +69,7 @@ bool est_vide_liste_points(ListePoints l){
 }
 
 void listePointsToString(ListePoints l){
-	printf("%s", toStringPoint(l->tab[0]));
+	printf("%s", toStringPoint((Point) l->tab[0]));
 	for(int i=1 ; i< l->nb ; i++){
 		printf(" , %s", toStringPoint(l->tab[i]));
 	}

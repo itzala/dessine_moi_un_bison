@@ -1,3 +1,6 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include "point.h"
 #include "chemin.h"
 
 int main(int argc, char const *argv[])
@@ -21,26 +24,23 @@ int main(int argc, char const *argv[])
 		printf("Erreur : nombre de paramètres invalide\n");
 		return EXIT_FAILURE;
 	}
-	ListePoints lp = creer_liste_points();
 
+	Chemin c1 = creer_chemin(largeur, couleur);
 	Point p1 = creer_point(x, y);
 
-	ListePoints lp = creer_liste_points();
 	for(int i=0 ; i<nb ; i++){
-		liste_points_ajouterPoint(lp, p1);
+		ajouter_point_chemin(c1, p1);
 		detruire_point(p1);
 		x *= 2;
 		y *= 2;
 		p1 = creer_point(x,y);
 	}
-	Chemin c1 = creer_chemin(lp, largeur, couleur);
-	cheminToString(c1);
+	toStringChemin(c1);
 
 
 
 
 	
 	detruire_chemin(c1);
-	detruire_liste_points(lp);
 	return 0;
 }
