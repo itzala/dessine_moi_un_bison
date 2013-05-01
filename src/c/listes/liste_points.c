@@ -63,6 +63,10 @@ Point* get_points(ListePoints l){
 	return l->tab;
 }
 
+int get_nb_points(ListePoints l){
+	return l->nb;
+}
+
 ListePoints ajouter_point_liste(ListePoints l, Point p){
 	if(est_pleine(l)){
 		rallonger_liste_chemins(l);
