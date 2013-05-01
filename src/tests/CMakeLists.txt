@@ -54,6 +54,7 @@ file(
 	source_files_test_chemin
 	./test_chemin.c
 	${DESSINE_BISON_SOURCE_DIR}/c/chemin/*
+	${DESSINE_BISON_SOURCE_DIR}/c/points/*
 	${DESSINE_BISON_SOURCE_DIR}/c/listes/liste_points.c
 )
 
@@ -74,6 +75,7 @@ file(
 	source_files_test_liste_chemins
 	./test_liste_chemins.c
 	${DESSINE_BISON_SOURCE_DIR}/c/chemin/*
+	${DESSINE_BISON_SOURCE_DIR}/c/points/*
 	${DESSINE_BISON_SOURCE_DIR}/c/listes/liste_points.c
 	${DESSINE_BISON_SOURCE_DIR}/c/listes/liste_chemins.c
 )
