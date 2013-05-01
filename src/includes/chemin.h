@@ -5,7 +5,7 @@
 
 typedef struct chemin* Chemin;
 
-Chemin creer_chemin(double epaisseur, int couleur);
+Chemin creer_chemin(double epaisseur, int couleur, ListePoints l);
 void detruire_chemin(Chemin c);
 
 Point* get_points_chemin(Chemin c);
