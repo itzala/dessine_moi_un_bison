@@ -15,7 +15,7 @@ ListeImages ajouter_image_liste(ListeImages li, Image img);
 Image get_image_indice(ListeImages li, int indice);
 Image get_image_tete(ListeImages li);
 int get_nb_images(ListeImages li);
-
+void dessiner_liste_images(ListeImages li, cairo_t * contexte);
 void listeImagesToString(ListeImages li);
 
 #endif

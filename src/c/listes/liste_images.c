@@ -65,3 +65,34 @@ void listeImagesToString(ListeImages li)
 		imageToString(li->tab[i]);
 	}
 }
+
+void dessiner_liste_images(ListeImages li, cairo_t * contexte)
+{
+	// for(int i = 0; i < li->nb; i++)
+	// 	dessiner_image(li->tab[i], contexte);
+	printf("On veut dessiner toutes les images !");
+}
+
+Image get_image_indice(ListeImages li, int indice)
+{
+	if(!est_vide_liste_images(li)){
+		int nb_neg = li->nb * (-1);
+		if (abs(indice) < li->nb || indice == nb_neg){
+			return li->tab[(li->nb + indice)%li->nb];
+		}
+		printf("L'indice %d est hors limites\n", indice);
+	}
+	else {
+		printf("La liste est vide\n");
+	}
+	return NULL;
+}
+
+Image get_image_tete(ListeImages li)
+{
+	if(!est_vide_liste_images(li))
+		return li->tab[0];
+
+	printf("La liste est vide\n");	
+	return NULL;
+}

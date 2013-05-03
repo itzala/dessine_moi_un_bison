@@ -22,8 +22,8 @@ Image clone_image(Image img_src)
 
 void detruire_image(Image img)
 {
-	// detruire_liste_chemins(img->tab);
-	// free(img);
+	detruire_liste_chemins(img->tab);
+	free(img);
 }
 
 ListeChemins get_chemins_image(Image img)

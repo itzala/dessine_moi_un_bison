@@ -1,6 +1,8 @@
 #ifndef _CHEMIN_H_
 #define _CHEMIN_H_
 
+#include <cairo.h>
+
 #include "liste_points.h"
 
 typedef struct chemin* Chemin;
@@ -18,8 +20,6 @@ int get_nb_points_chemin(Chemin c);
 // Chemin set_points(Chemin c, Point* l);
 Chemin set_epaisseur(Chemin c, double epaisseur);
 Chemin set_couleur(Chemin c, int couleur);
-
-
 
 Chemin ajouter_point_chemin(Chemin c, Point p);
 

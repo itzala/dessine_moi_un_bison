@@ -13,6 +13,8 @@ pkg_check_modules(
 	GTK3 
 	REQUIRED 
 	gtk+-3.0)
+
+
 # On ajoute les dossiers et définitions de GTK+
 include_directories(
 	${GTK3_INCLUDE_DIRS}
@@ -21,6 +23,7 @@ include_directories(
 	${DESSINE_BISON_SOURCE_DIR}/includes/chemin
 	${DESSINE_BISON_SOURCE_DIR}/includes/image
 	${DESSINE_BISON_SOURCE_DIR}/includes/listes
+	${DESSINE_BISON_SOURCE_DIR}/includes/cairo
 )
 
 
@@ -47,7 +50,8 @@ add_executable(
 
 
 # On lie les librairies
-target_link_libraries(dessineBison ${GTK3_LIBRARIES})
+target_link_libraries(dessineBison ${GTK3_LIBRARIES}
+cairo)
 
 add_subdirectory(tests)
 add_subdirectory(includes)
