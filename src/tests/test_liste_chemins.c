@@ -72,6 +72,8 @@ int main(int argc, char const *argv[])
 		detruire_chemin(c);
 	}
 	listeCheminsToString(lc);
+	ListeChemins cp = clone_liste_chemins(lc);
+	listeCheminsToString(cp);
 	detruire_liste_chemins(lc);
 	return EXIT_SUCCESS;
 }

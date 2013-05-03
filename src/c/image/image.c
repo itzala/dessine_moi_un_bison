@@ -15,16 +15,15 @@ Image creer_image()
 
 Image clone_image(Image img_src)
 {
-	Image clone = (Image) malloc(sizeof(struct image));
+	Image clone = creer_image();
 	clone->tab = clone_liste_chemins(img_src->tab);
-
 	return clone;
 }
 
 void detruire_image(Image img)
 {
-	detruire_liste_chemins(img->tab);
-	free(img);
+	// detruire_liste_chemins(img->tab);
+	// free(img);
 }
 
 ListeChemins get_chemins_image(Image img)
