@@ -44,6 +44,10 @@ int get_couleur(Chemin c){
 	return c->couleur;
 }
 
+int get_nb_points_chemin(Chemin c){
+	return get_nb_points(c->tab);
+}
+
 
 // Chemin set_points(Chemin c, Point* l){
 
@@ -75,7 +79,10 @@ Chemin clone(Chemin c){
 }
 
 char* toStringChemin(Chemin c){
-	char* buffer = malloc(sizeof(char)*50);
-	sprintf(buffer, "Chemin : epaisseur=%d, couleur=%d", (int) get_epaisseur(c), get_couleur(c));
+	char* buffer_liste = listePointsToString(c->tab);
+	char* buffer = malloc(sizeof(char)*50+strlen(buffer_liste));
+	int new_taille = sprintf(buffer, "Chemin : epaisseur=%d, couleur=%d, liste :\n%s", (int) get_epaisseur(c), get_couleur(c), buffer_liste);
+	free(buffer_liste);
+	buffer = realloc(buffer, sizeof(char)*new_taille);
 	return buffer;
 }

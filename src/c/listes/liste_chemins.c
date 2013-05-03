@@ -78,7 +78,7 @@ int get_nb_chemins(ListeChemins l)
 void listeCheminsToString(ListeChemins l){
 	printf("%s", toStringChemin(l->tab[0]));
 	for(int i=1 ; i< l->nb ; i++){
-		printf(" , %s", toStringChemin(l->tab[i]));
+		printf(" ,\n\n %s", toStringChemin(l->tab[i]));
 	}
 	printf("\n");
 }

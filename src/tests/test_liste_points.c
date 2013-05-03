@@ -22,10 +22,13 @@ int main(int argc, char const *argv[])
 	}
 
 	ListePoints lp = creer_liste_points();
+	Point p = NULL;
 	for(int i=0 ; i<nb ; i++){
-		ajouter_point_liste(lp, creer_point(x, y));
+		p = creer_point(x, y);
+		ajouter_point_liste(lp, p);
 		x *= 2;
 		y *= 2;
+		detruire_point(p);
 	}
 	printf("%s\n", listePointsToString(lp));
 	detruire_liste_points(lp);

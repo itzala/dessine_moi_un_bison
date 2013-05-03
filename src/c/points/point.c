@@ -22,6 +22,11 @@ Point creer_point_polaire(double mod, double ang){
 	return p;
 }
 
+Point clone_point(Point p){
+	return creer_point(get_abscisse(p), get_ordonnee(p));
+
+}
+
 void detruire_point(Point p){
 	detruire_cartesien(p->p);
 	free(p);

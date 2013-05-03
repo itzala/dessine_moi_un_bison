@@ -71,7 +71,7 @@ ListePoints ajouter_point_liste(ListePoints l, Point p){
 	if(est_pleine(l)){
 		rallonger_liste_chemins(l);
 	}
-	l->tab[l->nb] = p;
+	l->tab[l->nb] = clone_point(p);
 	l->nb++;
 	return l;
 }
@@ -86,7 +86,7 @@ char* listePointsToString(ListePoints l){
 	char* res = malloc(sizeof(char)*taille);
 	char* buffer = malloc(sizeof(char)*taille);
 	int new_taille = sprintf(buffer, "%s", toStringPoint(l->tab[0]));
-	for(int i=0 ; i< l->nb ; i++){
+	for(int i=1 ; i< l->nb ; i++){
 
 		while(new_taille > taille){
 			taille *= 2;

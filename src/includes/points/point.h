@@ -13,6 +13,7 @@ typedef struct point* Point;
 
 Point creer_point(double x, double y);
 Point creer_point_polaire(double mod, double ang);
+Point clone_point(Point p);
 void detruire_point(Point p);
 
 double get_abscisse(Point p);
