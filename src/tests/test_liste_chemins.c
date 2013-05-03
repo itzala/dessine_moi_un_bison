@@ -55,8 +55,8 @@ int main(int argc, char const *argv[])
 	if(argc < 2){
 		nb = 12;
 	}
-	else if(argc == 4){
-		nb = atoi(argv[3]);
+	else if(argc == 7){
+		nb = atoi(argv[6]);
 	}
 	else{
 		printf("Erreur : nombre de paramètres invalide\n");

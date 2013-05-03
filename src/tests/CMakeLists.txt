@@ -1,13 +1,3 @@
-include_directories(
-	${GTK3_INCLUDE_DIRS}
-	${DESSINE_BISON_SOURCE_DIR}/includes
-	${DESSINE_BISON_SOURCE_DIR}/includes/points
-	${DESSINE_BISON_SOURCE_DIR}/includes/listes
-	${DESSINE_BISON_SOURCE_DIR}/includes/images
-)
-
-
-
 # On créé l'exécutable test_points
 file(
 	GLOB_RECURSE
@@ -79,6 +69,7 @@ file(
 	${DESSINE_BISON_SOURCE_DIR}/c/chemin/*
 	${DESSINE_BISON_SOURCE_DIR}/c/points/*
 	${DESSINE_BISON_SOURCE_DIR}/c/listes/*
+	${DESSINE_BISON_SOURCE_DIR}/c/image/*
 )
 
 add_executable(
@@ -88,6 +79,30 @@ add_executable(
 
 target_link_libraries(
 	test_liste_chemins
+	m
+)
+
+
+
+# On créé l'exécutable test_liste_chemin
+
+file(
+	GLOB_RECURSE
+	source_files_test_liste_image
+	./test_liste_images.c
+	${DESSINE_BISON_SOURCE_DIR}/c/listes/*
+	${DESSINE_BISON_SOURCE_DIR}/c/points/*
+	${DESSINE_BISON_SOURCE_DIR}/c/chemin/*
+	${DESSINE_BISON_SOURCE_DIR}/c/image/*
+)
+
+add_executable(
+	test_liste_image
+	${source_files_test_liste_image}
+	)
+
+target_link_libraries(
+	test_liste_image
 	m
 )
 

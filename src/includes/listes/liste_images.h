@@ -2,11 +2,12 @@
 #define LISTE_IMAGES_H
 
 #include "image.h"
+#include "liste.h"
 
 typedef struct liste_images* ListeImages;
 
 ListeImages creer_liste_images();
-void detuire_liste_images(ListeImages li);
+void detruire_liste_images(ListeImages li);
 
 bool est_vide_liste_images(ListeImages li);
 

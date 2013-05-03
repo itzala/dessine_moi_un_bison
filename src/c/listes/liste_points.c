@@ -81,6 +81,10 @@ bool est_vide_liste_points(ListePoints l){
 }
 
 char* listePointsToString(ListePoints l){
+	if (est_vide_liste_points(l))
+	{
+		return "";
+	}
 	int taille = 50;
 	int taille_ini = 50;
 	char* res = malloc(sizeof(char)*taille);

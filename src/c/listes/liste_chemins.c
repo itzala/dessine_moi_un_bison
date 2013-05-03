@@ -1,5 +1,4 @@
 #include "liste_chemins.h"
-#include "liste.h"
 
 
 struct liste_chemins
@@ -27,7 +26,19 @@ ListeChemins creer_liste_chemins(){
 	return l;
 }
 
+ListeChemins clone_liste_chemins(ListeChemins l){
+	ListeChemins cp = creer_liste_chemins();
+	for(int i = 0 ; i<get_nb_chemins_liste(l) ; i++){
+		ajouter_chemin_liste(cp, get_chemin_indice(l, i));
+	}
+	return cp;
+}
+
+
 void detruire_liste_chemins(ListeChemins l){
+	for(int i=0 ; i<l->nb ; i++){
+		detruire_chemin(l->tab[i]);
+	}
 	free(l->tab);
 	free(l);
 }
@@ -57,6 +68,10 @@ Chemin* get_chemins(ListeChemins l){
 	return l->tab;
 }
 
+int get_nb_chemins_liste(ListeChemins l){
+	return l->nb;
+}
+
 ListeChemins ajouter_chemin_liste(ListeChemins l, Chemin c){
 	if(est_pleine_liste_chemins(l)){
 		rallonger(l);
@@ -76,9 +91,15 @@ int get_nb_chemins(ListeChemins l)
 }
 
 void listeCheminsToString(ListeChemins l){
-	printf("%s", toStringChemin(l->tab[0]));
-	for(int i=1 ; i< l->nb ; i++){
-		printf(" ,\n\n %s", toStringChemin(l->tab[i]));
+	if (est_vide_liste_chemins(l))
+	{
+		printf("Aucun chemin\n");
 	}
-	printf("\n");
+	else{
+		printf("%s", toStringChemin(l->tab[0]));
+		for(int i=1 ; i< l->nb ; i++){
+			printf(" ,\n\n %s", toStringChemin(l->tab[i]));
+		}
+		printf("\n");
+	}
 }
