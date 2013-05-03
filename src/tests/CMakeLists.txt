@@ -68,3 +68,26 @@ target_link_libraries(
 	m
 )
 
+
+
+# On créé l'exécutable test_liste_chemin
+
+file(
+	GLOB_RECURSE
+	source_files_test_liste_chemins
+	./test_liste_chemins.c
+	${DESSINE_BISON_SOURCE_DIR}/c/chemin/*
+	${DESSINE_BISON_SOURCE_DIR}/c/points/*
+	${DESSINE_BISON_SOURCE_DIR}/c/listes/*
+)
+
+add_executable(
+	test_liste_chemins
+	${source_files_test_liste_chemins}
+	)
+
+target_link_libraries(
+	test_liste_chemins
+	m
+)
+

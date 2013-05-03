@@ -1,5 +1,4 @@
 #include "liste_chemins.h"
-#include "liste_points.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -18,7 +17,7 @@ ListePoints creer_liste_points_test(int x, int y, int nb)
 	return lp;
 }
 
-Chemin creer_chemin_test(int argc, char** argv, int multi)
+Chemin creer_chemin_test(int argc, const char** argv, int multi)
 {
 	int x, y, nb, largeur, couleur;
 	if(argc < 2){
@@ -37,14 +36,14 @@ Chemin creer_chemin_test(int argc, char** argv, int multi)
 	}
 	ListePoints lp = creer_liste_points_test(x, y, nb);
 
-	Chemin c = creer_chemin(largeur, couleur);
+	Chemin c = creer_chemin_vide(largeur, couleur);
 	//Chemin c = creer_chemin(lp, largeur, couleur); A voir avec l'ajout des points ci dessous
 	Point* liste = get_points(lp);
 	int nb_points = get_nb_points(lp);
 	for (int i = 0; i < nb_points; i++)
 		ajouter_point_chemin(c, liste[i]);
 
-	detruire_liste_point(lp);
+	detruire_liste_points(lp);
 	detruire_chemin(c);
 
 	return c;

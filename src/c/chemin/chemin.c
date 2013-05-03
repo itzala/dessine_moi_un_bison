@@ -8,7 +8,7 @@ struct chemin
 };
 
 Chemin creer_chemin_vide(double epaisseur, int couleur){
-	creer_chemin(epaisseur, couleur, NULL);
+	return creer_chemin(epaisseur, couleur, NULL);
 }
 
 Chemin creer_chemin(double epaisseur, int couleur, ListePoints l){
