@@ -58,10 +58,8 @@ void surfaceToString(Surface s)
 
 Surface dessiner_surface(Surface s)
 {
-	//dessiner_liste_images(s->tab, s->contexte);
-	cairo_move_to(s->contexte, 1, 1);
-	cairo_line_to(s->contexte,2, 5);
-	cairo_set_line_width(s->contexte, 0.5);	
+	dessiner_liste_images(s->tab, s->contexte);
+
 	cairo_stroke(s->contexte);
 
 	return s;

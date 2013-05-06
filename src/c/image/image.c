@@ -55,3 +55,8 @@ void imageToString(Image img)
 {
 	listeCheminsToString(img->tab);
 }
+
+void dessiner_image(Image img, cairo_t * contexte)
+{
+	dessiner_liste_chemins(img->tab,contexte);
+}

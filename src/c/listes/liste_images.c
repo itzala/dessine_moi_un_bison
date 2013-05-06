@@ -68,9 +68,8 @@ void listeImagesToString(ListeImages li)
 
 void dessiner_liste_images(ListeImages li, cairo_t * contexte)
 {
-	// for(int i = 0; i < li->nb; i++)
-	// 	dessiner_image(li->tab[i], contexte);
-	printf("On veut dessiner toutes les images !");
+	for(int i = 0; i < li->nb; i++)
+		dessiner_image(li->tab[i], contexte);	
 }
 
 Image get_image_indice(ListeImages li, int indice)

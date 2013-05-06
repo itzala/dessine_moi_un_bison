@@ -18,5 +18,6 @@ int get_nb_chemins_image(Image img);
 Image ajouter_chemin_image(Image img, Chemin c);
 
 void imageToString(Image img);
+void dessiner_image(Image img, cairo_t * contexte);
 
 #endif

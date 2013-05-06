@@ -103,3 +103,9 @@ void listeCheminsToString(ListeChemins l){
 		printf("\n");
 	}
 }
+
+void dessiner_liste_chemins(ListeChemins l, cairo_t * contexte)
+{
+	for(int i = 0; i < l->nb; i++)
+		dessiner_chemin(l->tab[i], contexte, i);	
+}

@@ -86,3 +86,25 @@ char* toStringChemin(Chemin c){
 	buffer = realloc(buffer, sizeof(char)*new_taille);
 	return buffer;
 }
+
+void dessiner_chemin(Chemin c, cairo_t * contexte, int indice)
+{
+	int x, y;
+	Point p = get_point_tete(c->tab); 
+	x = get_abscisse(p);
+	y = get_ordonnee(p);
+	if (indice == 0)	
+		cairo_move_to(contexte, x, y);
+	else	
+		cairo_line_to(contexte, x, y);
+
+	int nb_points = get_nb_points(c->tab);
+	for (int i = 1; i < nb_points; i++)
+	{
+		p = get_point_indice(c->tab, i); 
+		x = get_abscisse(p);
+		y = get_ordonnee(p);
+		cairo_line_to(contexte, x, y);
+	}
+	cairo_set_line_width(contexte, c->epaisseur);
+}

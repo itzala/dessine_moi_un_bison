@@ -56,6 +56,7 @@ ${source_files_test_chemin}
 target_link_libraries(
 test_chemin
 m
+cairo
 )
 
 
@@ -80,6 +81,7 @@ ${source_files_test_liste_chemins}
 target_link_libraries(
 test_liste_chemins
 m
+cairo
 )
 
 
@@ -104,6 +106,7 @@ ${source_files_test_liste_images}
 target_link_libraries(
 test_liste_images
 m
+cairo
 )
 
 # On créé l'exécutable test_liste_chemin

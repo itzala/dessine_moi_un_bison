@@ -20,5 +20,6 @@ ListeChemins ajouter_chemin_liste(ListeChemins l, Chemin p);
 bool est_vide_liste_chemins(ListeChemins l);
 
 void listeCheminsToString(ListeChemins l);
+void dessiner_liste_chemins(ListeChemins l, cairo_t * contexte);
 
 #endif

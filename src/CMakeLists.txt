@@ -50,7 +50,8 @@ add_executable(
 
 
 # On lie les librairies
-target_link_libraries(dessineBison ${GTK3_LIBRARIES}
+target_link_libraries(dessineBison
+${GTK3_LIBRARIES}
 cairo)
 
 add_subdirectory(tests)
