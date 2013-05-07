@@ -58,5 +58,6 @@ void imageToString(Image img)
 
 void dessiner_image(Image img, cairo_t * contexte)
 {
+	printf("Dessin d'une image....\n");
 	dessiner_liste_chemins(img->tab,contexte);
 }

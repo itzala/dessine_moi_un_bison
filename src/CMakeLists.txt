@@ -1,10 +1,15 @@
 cmake_minimum_required(VERSION 2.8)
 
-
-
 project(DESSINE_BISON C)
 
-
+find_program(FLEX flex DOC "Path to the flex lexical analyser generator.")
+if(NOT ${FLEX})
+message(SEND_ERROR "Flex not found.")
+endif
+find_program(BISON bison DOC "Path to the bison parser generator.")
+if(NOT ${BISON})
+message(SEND_ERROR "Bison not found.")
+endif
 
 # On détecte les packages avec PkgConfig
 find_package(PkgConfig REQUIRED)

@@ -1,5 +1,5 @@
 %{
-#include "../bison/dubla.tab.h"
+#include "dublaY.h"
 %}
 
 %%
@@ -18,7 +18,6 @@
 draw	{return DRAW;}
 fill	{return FILL;}
 image 	{return IMG;}
-
 
 ":"	 	{return DOUBLE;}
 ","		{return COMMA;}

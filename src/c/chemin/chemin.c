@@ -87,16 +87,16 @@ char* toStringChemin(Chemin c){
 	return buffer;
 }
 
-void dessiner_chemin(Chemin c, cairo_t * contexte, int indice)
+void dessiner_chemin(Chemin c, cairo_t * contexte)
 {
 	int x, y;
 	Point p = get_point_tete(c->tab); 
 	x = get_abscisse(p);
 	y = get_ordonnee(p);
-	if (indice == 0)	
-		cairo_move_to(contexte, x, y);
-	else	
-		cairo_line_to(contexte, x, y);
+	printf("\tDessin du chemin\n");
+	printf("\t\tTracé du point %d, %d\n", x, y);
+	
+	cairo_move_to(contexte, x, y);
 
 	int nb_points = get_nb_points(c->tab);
 	for (int i = 1; i < nb_points; i++)
@@ -104,7 +104,9 @@ void dessiner_chemin(Chemin c, cairo_t * contexte, int indice)
 		p = get_point_indice(c->tab, i); 
 		x = get_abscisse(p);
 		y = get_ordonnee(p);
+		printf("\t\tTracé du point %d, %d\n", x, y);
 		cairo_line_to(contexte, x, y);
 	}
+	printf("\t\tActivation de l'épaisseur : %lf\n\n", c->epaisseur);
 	cairo_set_line_width(contexte, c->epaisseur);
 }

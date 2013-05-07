@@ -1,0 +1,6 @@
+ADD_CUSTOM_COMMAND(OUTPUT dublaY.c dublaY.h
+	COMMAND ${BISON} -d dubla.y
+	MAIN_DEPENDENCY dubla.y
+	COMMENT "DANS ton cul !"
+	VERBATIM
+)

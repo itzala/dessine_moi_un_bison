@@ -25,5 +25,5 @@ Chemin ajouter_point_chemin(Chemin c, Point p);
 
 Chemin clone(Chemin c);
 char* toStringChemin(Chemin c);
-void dessiner_chemin(Chemin c, cairo_t * contexte, int indice);
+void dessiner_chemin(Chemin c, cairo_t * contexte);
 #endif

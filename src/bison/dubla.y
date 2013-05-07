@@ -2,11 +2,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include "../includes/cairo/surface.h"
+
 void error(){
 	yyerror();
 }
 %}
-%token IMG DRAW FILL DOUBLE COMMA POINT SEP_C PLUS DIV MINUS PROD CYCLE DIGIT OPEN CLOSE TERM
+%token IMG DRAW FILL DOUBLE COMMA POINT SEP_P CYCLE DIGIT OPEN CLOSE TERM PLUS DIV MINUS PROD
 
 %%
 
@@ -15,7 +17,7 @@ start : mot
 mot : 	instruction
 		| IMG OPEN instruction CLOSE TERM
 		;
-instruction:	DRAW arguments TERM
+instruction:	DRAW {printf("Commande draw bizutée !");} arguments TERM
 				| FILL arguments TERM
 				| {}
 				;
@@ -23,8 +25,8 @@ arguments:	 "("point")"suivant
 			;
 point :	expression sep_expr expression
 			;
-sep_expr :	":"
-			| ","
+sep_expr :	DOUBLE
+			| COMMA
 			;
 expression :	DIGIT
 				| "(" DIGIT ")"
@@ -57,6 +59,11 @@ E --> digit E" | "(" digit E" ")"
 
 int main(int argc, char** argv){
 	yyparse();
+
+
+	Surface s = creer_surface("../ressources/essai.pdf", 50, 50, "pdf");
+
+	detruire_surface(s);
 
 	/* quelle commande a été trouvée ?*/
 
