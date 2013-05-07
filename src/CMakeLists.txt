@@ -1,15 +1,33 @@
 cmake_minimum_required(VERSION 2.8)
-
 project(DESSINE_BISON C)
 
-find_program(FLEX flex DOC "Path to the flex lexical analyser generator.")
-if(NOT ${FLEX})
-message(SEND_ERROR "Flex not found.")
-endif
-find_program(BISON bison DOC "Path to the bison parser generator.")
-if(NOT ${BISON})
-message(SEND_ERROR "Bison not found.")
-endif
+IF(NOT DEFINED BISON_PREFIX_OUTPUTS)
+ SET(BISON_PREFIX_OUTPUTS FALSE)
+ENDIF(NOT DEFINED BISON_PREFIX_OUTPUTS)
+
+IF(NOT DEFINED BISON_GENERATE_DEFINES)
+ SET(BISON_GENERATE_DEFINES FALSE)
+ENDIF(NOT DEFINED BISON_GENERATE_DEFINES)
+
+IF(NOT BISON_EXECUTABLE)
+ MESSAGE(STATUS "Looking for bison")
+ FIND_PROGRAM(BISON_EXECUTABLE bison)
+ IF(BISON_EXECUTABLE)
+   MESSAGE(STATUS "Looking for bison -- ${BISON_EXECUTABLE}")
+ ENDIF(BISON_EXECUTABLE)
+ENDIF(NOT BISON_EXECUTABLE)
+
+IF(NOT DEFINED FLEX_PREFIX_OUTPUTS)
+  SET(FLEX_PREFIX_OUTPUTS FALSE)
+ENDIF(NOT DEFINED FLEX_PREFIX_OUTPUTS) 
+
+IF(NOT FLEX_EXECUTABLE)
+  MESSAGE(STATUS "Looking for flex")
+  FIND_PROGRAM(FLEX_EXECUTABLE flex)
+  IF(FLEX_EXECUTABLE)
+    MESSAGE(STATUS "Looking for flex -- ${FLEX_EXECUTABLE}")
+  ENDIF(FLEX_EXECUTABLE)
+ENDIF(NOT FLEX_EXECUTABLE) 
 
 # On détecte les packages avec PkgConfig
 find_package(PkgConfig REQUIRED)
@@ -61,3 +79,6 @@ cairo)
 
 add_subdirectory(tests)
 add_subdirectory(includes)
+
+add_subdirectory(flex)
+add_subdirectory(bison)
