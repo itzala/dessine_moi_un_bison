@@ -30,28 +30,40 @@ add_definitions(${GTK3_CFLAGS_OTHER})
 
 
 
-
-# On créé l'exécutable
-file(
-	GLOB_RECURSE
-	source_files_exec
-	${DESSINE_BISON_SOURCE_DIR}/c/*
-)
-
 ADD_DEFINITIONS(-std=c99 -g -Wall)
 
 
-add_executable(
-	dessineBison 
-	${source_files_exec}
-)
-
-
-# On lie les librairies
-target_link_libraries(dessineBison
-${GTK3_LIBRARIES}
-cairo)
 
 add_subdirectory(tests)
-add_subdirectory(includes)
-add_subdirectory(bison)
+
+
+
+
+find_package(BISON)
+find_package(FLEX)
+
+BISON_TARGET(DublaParser 
+			${DESSINE_BISON_SOURCE_DIR}/bison/dubla.y 
+			${DESSINE_BISON_SOURCE_DIR}/../bin/y.tab.c)
+
+FLEX_TARGET(ScannerDubla 
+			${DESSINE_BISON_SOURCE_DIR}/flex/dubla.l 
+			${DESSINE_BISON_SOURCE_DIR}/../bin/lex.yy.c)
+
+ADD_FLEX_BISON_DEPENDENCY(ScannerDubla DublaParser)
+
+file(
+	GLOB_RECURSE
+	source_files_parser
+	${DESSINE_BISON_SOURCE_DIR}/c/*)
+
+add_executable(Foo
+  	${DESSINE_BISON_SOURCE_DIR}/../bin/lex.yy.c
+	${DESSINE_BISON_SOURCE_DIR}/../bin/y.tab.c
+	${source_files_parser}
+	)
+target_link_libraries(Foo
+							${FLEX_LIBRARIES} 
+							${BISON_LIBRARIES}
+							${GTK3_LIBRARIES}
+							cairo)

@@ -1,5 +1,7 @@
 %{
-#include "dublaY.h"
+#include "y.tab.h"
+
+#include <ctype.h>
 %}
 
 %%

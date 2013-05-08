@@ -2,11 +2,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "../includes/cairo/surface.h"
 
-void error(){
-	yyerror();
-}
+#include "surface.h"
+
+extern int yylex();
+void yyerror (char const *);
+void error();
 %}
 %token IMG DRAW FILL DOUBLE COMMA POINT SEP_P CYCLE DIGIT OPEN CLOSE TERM PLUS DIV MINUS PROD
 
@@ -67,5 +68,17 @@ int main(int argc, char** argv){
 
 	/* quelle commande a été trouvée ?*/
 
-	return EXIT_SUCCES;
+	return EXIT_SUCCESS;
+}
+
+
+
+void error(){
+	yyerror("Erreur Syntaxique");
+}
+
+void
+yyerror (char const *s)
+{
+fprintf (stderr, "%s\n", s);
 }
