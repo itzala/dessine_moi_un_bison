@@ -55,7 +55,7 @@ int couleur;
 %start fichier
 %%
 
-fichier : 		instruction END_FILE
+fichier : 		instruction
 				;
 
 instruction :	DRAW {creation_image();c = creer_chemin_vide(epaisseur, couleur, false);} arguments TERM {detruire_chemin(c); ajout_image_surface();} instruction

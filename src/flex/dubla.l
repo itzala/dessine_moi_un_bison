@@ -18,29 +18,28 @@ reel	{entier}("."{entier})?
 
 "{"			{return OPEN;}
 "}"			{return CLOSE;}
-"("			{return PAR_OP;}
-")"			{return PAR_CLO;}
+"("			{printf("("); return PAR_OP;}
+")"			{printf(")"); return PAR_CLO;}
 "+"			{return PLUS;}
 "-"			{return MINUS;}
 "*"			{return PROD;}
 "/"			{return DIV;}
 
-"."			{printf("point\n"); return POINT;}
+"."			{printf(" point \n"); return POINT;}
 {reel}		{yylval.reel = atof(yytext);
-			printf("%f\n", yylval.reel);
+			printf("%f", yylval.reel);
 			return DIGIT;}
 
-"draw"		{printf("draw\n"); return DRAW;}
-"fill"		{printf("fill\n"); return FILL;}
-"image" 	{printf("image\n"); return IMG;}
+"draw"		{printf(" draw "); return DRAW;}
+"fill"		{printf(" fill "); return FILL;}
+"image" 	{printf(" image "); return IMG;}
 
-":"	 		{printf("double\n"); return DOUBLE;}
-","			{printf("comma\n"); return COMMA;}
+":"	 		{printf(" : "); return DOUBLE;}
+","			{printf(" , "); return COMMA;}
 
-";"			{printf("term\n"); return TERM;}
+";"			{printf(" term\n"); return TERM;}
 
-"--"		{printf("sep_p\n"); return SEP_P;}
+"--"		{printf("--"); return SEP_P;}
 
-<<EOF>>		{printf("END_FILE\n"); return END_FILE;}
 
 %%
