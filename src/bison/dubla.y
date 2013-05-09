@@ -21,8 +21,8 @@ Point p = NULL;
 Point premier_point_chemin = NULL;
 Surface s = NULL;
 int est_premier_point_chemin = 1;
-double epaisseur;
-int couleur;
+double epaisseur = 1.0;
+int couleur = 1;
 
 
 %}
@@ -58,22 +58,31 @@ int couleur;
 fichier : 		instruction
 				;
 
-instruction :	DRAW {creation_image();c = creer_chemin_vide(epaisseur, couleur, false);} arguments TERM {detruire_chemin(c); ajout_image_surface();} instruction
-				| FILL {creation_image();c = creer_chemin_vide(epaisseur, couleur, true);} arguments TERM {detruire_chemin(c); ajout_image_surface();} instruction
+instruction :	DRAW {creation_image(); c = creer_chemin_vide(epaisseur, couleur, false); printf("%s\n", toStringChemin(c));} arguments {ajouter_chemin_image(i, c);detruire_chemin(c); ajout_image_surface();} TERM instruction 
+				| FILL {creation_image(); c = creer_chemin_vide(epaisseur, couleur, true);} arguments {ajouter_chemin_image(i, c);detruire_chemin(c); ajout_image_surface();} TERM instruction 
 				| IMG image instruction
 				| {}
 				;
 
-img-instr :		DRAW {c = creer_chemin_vide(epaisseur, couleur, false);} arguments TERM {detruire_chemin(c);} img-instr
-				| FILL {c = creer_chemin_vide(epaisseur, couleur, true);} arguments TERM {detruire_chemin(c);} img-instr
+img-instr :		DRAW {c = creer_chemin_vide(epaisseur, couleur, false);} arguments {ajouter_chemin_image(i, c); detruire_chemin(c);} TERM img-instr 
+				| FILL {c = creer_chemin_vide(epaisseur, couleur, true);} arguments {ajouter_chemin_image(i, c); detruire_chemin(c);} TERM img-instr 
 				| IMG image img-instr
 				| {}
 				;
 
-image :			{creation_image();} OPEN img-instr CLOSE TERM {ajout_image_surface();}
+image :			{creation_image();} OPEN img-instr CLOSE {ajout_image_surface();} TERM
 				;
 
-arguments:		PAR_OP point PAR_CLO {ajouter_point_chemin(c, $2); detruire_point($2);} suivant
+arguments:		PAR_OP point PAR_CLO {printf("\n\najouter_point_chemin(%s,c)\n", toStringPoint($2)); ajouter_point_chemin(c, $2); printf("%s\n", toStringChemin(c)); detruire_point($2);} suivant
+				;
+
+suivant :		SEP_P boucle
+				| {}
+				;
+
+boucle :		PLUS arguments
+				| CYCLE suivant
+				| arguments
 				;
 
 point :			expression sep_expr expression 	{if($1 < 0 || $3 < 0){
@@ -106,15 +115,6 @@ expression :	DIGIT 							{$$ = $<reel>1;}
 				| expression DIV expression		{$$ = $<reel>1 / $<reel>2;}
 				| expression PROD expression	{$$ = $<reel>1 * $<reel>2;}
 				| 	 							{$$ = -1.0;}
-				;
-
-suivant :		SEP_P boucle
-				| {}
-				;
-
-boucle :		PLUS arguments
-				| CYCLE suivant
-				| arguments
 				;
 
 
@@ -168,6 +168,7 @@ int main(int argc, char** argv){
 	yyin = myfile;
 
 	if(!yyparse())
+		surfaceToString(s);
 		dessiner_surface(s);
 
 
@@ -197,6 +198,7 @@ void creation_image(){
 }
 
 void ajout_image_surface(){
+	imageToString(get_image_queue(li));
 	ajouter_image_surface(s, get_image_queue(li));
 	supprimer_image_queue_liste(li);
 }

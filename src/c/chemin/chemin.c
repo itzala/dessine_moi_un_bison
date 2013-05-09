@@ -21,6 +21,13 @@ Chemin creer_chemin(double epaisseur, int couleur, ListePoints l, bool fill){
 	return c;
 }
 
+Chemin vider_chemin(Chemin c){
+	detruire_liste_points(c->tab);
+	c->tab = creer_liste_points();
+	return c;
+}
+
+
 void detruire_chemin(Chemin c){
 	detruire_liste_points(c->tab);
 	free(c);
@@ -69,7 +76,10 @@ Chemin set_couleur(Chemin c, int couleur){
 	return c;
 }
 
-
+Chemin set_fill(Chemin c, bool fill){
+	c->fill = fill;
+	return c;
+}
 
 
 Chemin ajouter_point_chemin(Chemin c, Point p){
@@ -85,11 +95,15 @@ Chemin clone(Chemin c){
 }
 
 char* toStringChemin(Chemin c){
+	if (est_vide_liste_points(c->tab))
+	{
+		return "Chemin vide";
+	}
 	char* buffer_liste = listePointsToString(c->tab);
 	char* buffer = malloc(sizeof(char)*50+strlen(buffer_liste));
-	int new_taille = sprintf(buffer, "Chemin : epaisseur=%d, couleur=%d, liste :\n%s", (int) get_epaisseur(c), get_couleur(c), buffer_liste);
+	sprintf(buffer, "Chemin : epaisseur=%d, couleur=%d, liste :\n%s", (int) get_epaisseur(c), get_couleur(c), buffer_liste);
 	free(buffer_liste);
-	buffer = realloc(buffer, sizeof(char)*new_taille);
+	buffer = realloc(buffer, sizeof(char)*strlen(buffer));
 	return buffer;
 }
 

@@ -83,7 +83,7 @@ bool est_vide_liste_points(ListePoints l){
 char* listePointsToString(ListePoints l){
 	if (est_vide_liste_points(l))
 	{
-		return "";
+		return "Pas de points";
 	}
 	int taille = 50;
 	int taille_ini = 50;
@@ -92,8 +92,8 @@ char* listePointsToString(ListePoints l){
 	int new_taille = sprintf(buffer, "%s", toStringPoint(l->tab[0]));
 	for(int i=1 ; i< l->nb ; i++){
 
-		while(new_taille > taille){
-			taille *= 2;
+		while(new_taille > taille){			// Tant il y a plus de caractères à rajouter que de place disponible
+			taille *= 2;					// On double la place disponible
 			if(new_taille < taille){
 				taille_ini += taille;
 				res = realloc(res, taille_ini*sizeof(char));

@@ -18,28 +18,27 @@ reel	{entier}("."{entier})?
 
 "{"			{return OPEN;}
 "}"			{return CLOSE;}
-"("			{printf("("); return PAR_OP;}
-")"			{printf(")"); return PAR_CLO;}
+"("			{return PAR_OP;}
+")"			{return PAR_CLO;}
 "+"			{return PLUS;}
 "-"			{return MINUS;}
 "*"			{return PROD;}
 "/"			{return DIV;}
 
-"."			{printf(" point \n"); return POINT;}
+"."			{return POINT;}
 {reel}		{yylval.reel = atof(yytext);
-			printf("%f", yylval.reel);
 			return DIGIT;}
 
-"draw"		{printf(" draw "); return DRAW;}
-"fill"		{printf(" fill "); return FILL;}
-"image" 	{printf(" image "); return IMG;}
+"draw"		{return DRAW;}
+"fill"		{return FILL;}
+"image" 	{return IMG;}
 
-":"	 		{printf(" : "); return DOUBLE;}
-","			{printf(" , "); return COMMA;}
+":"	 		{return DOUBLE;}
+","			{return COMMA;}
 
-";"			{printf(" term\n"); return TERM;}
+";"			{return TERM;}
 
-"--"		{printf("--"); return SEP_P;}
+"--"		{return SEP_P;}
 
 
 %%

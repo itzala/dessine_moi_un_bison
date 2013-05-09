@@ -49,7 +49,7 @@ void detruire_surface(Surface s)
 
 void surfaceToString(Surface s)
 {
-
+	listeImagesToString(s->tab);
 }
 
 Surface dessiner_surface(Surface s)
