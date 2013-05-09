@@ -55,17 +55,12 @@ int couleur;
 %start fichier
 %%
 
-fichier : 		instruction {dessiner_surface(s);}
+fichier : 		instruction END_FILE
 				;
 
-instruction :	DRAW {creation_image();c = creer_chemin_vide(epaisseur, couleur, false);} arguments TERM {detruire_chemin(c); ajout_image_surface();} next-instr
-				| FILL {creation_image();c = creer_chemin_vide(epaisseur, couleur, true);} arguments TERM {detruire_chemin(c); ajout_image_surface();} next-instr
-				| IMG image next-instr
-				;
-
-next-instr :	DRAW {creation_image();c = creer_chemin_vide(epaisseur, couleur, false);} arguments TERM {detruire_chemin(c); ajout_image_surface();} next-instr
-				| FILL {creation_image();c = creer_chemin_vide(epaisseur, couleur, true);} arguments TERM {detruire_chemin(c); ajout_image_surface();} next-instr
-				| IMG image next-instr
+instruction :	DRAW {creation_image();c = creer_chemin_vide(epaisseur, couleur, false);} arguments TERM {detruire_chemin(c); ajout_image_surface();} instruction
+				| FILL {creation_image();c = creer_chemin_vide(epaisseur, couleur, true);} arguments TERM {detruire_chemin(c); ajout_image_surface();} instruction
+				| IMG image instruction
 				| {}
 				;
 
@@ -172,9 +167,8 @@ int main(int argc, char** argv){
 	// set flex to read from it instead of defaulting to STDIN:
 	yyin = myfile;
 
-	do {
-		yyparse();
-	} while (!feof(yyin));
+	if(!yyparse())
+		dessiner_surface(s);
 
 
 	detruire_surface(s);

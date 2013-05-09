@@ -7,7 +7,7 @@ int fileno();
 %}
 %option nounput
 
-blanks	[ \t]
+blanks	[ \t\n]
 
 entier	[[:digit:]]+
 
@@ -25,23 +25,22 @@ reel	{entier}("."{entier})?
 "*"			{return PROD;}
 "/"			{return DIV;}
 
-"."			{return POINT;}
+"."			{printf("point\n"); return POINT;}
 {reel}		{yylval.reel = atof(yytext);
 			printf("%f\n", yylval.reel);
 			return DIGIT;}
 
 "draw"		{printf("draw\n"); return DRAW;}
-"fill"		{return FILL;}
-"image" 		{return IMG;}
+"fill"		{printf("fill\n"); return FILL;}
+"image" 	{printf("image\n"); return IMG;}
 
-":"	 		{return DOUBLE;}
-","			{return COMMA;}
+":"	 		{printf("double\n"); return DOUBLE;}
+","			{printf("comma\n"); return COMMA;}
 
-";"			{return TERM;}
-"\n"		{return TERM;}
-"\\n"		{}
-";\n"		{}
+";"			{printf("term\n"); return TERM;}
 
-"--"		{return SEP_P;}
+"--"		{printf("sep_p\n"); return SEP_P;}
+
+<<EOF>>		{printf("END_FILE\n"); return END_FILE;}
 
 %%
