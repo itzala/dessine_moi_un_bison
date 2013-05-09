@@ -100,6 +100,7 @@ char* toStringChemin(Chemin c){
 		return "Chemin vide";
 	}
 	char* buffer_liste = listePointsToString(c->tab);
+	printf("%s\n", buffer_liste);
 	char* buffer = malloc(sizeof(char)*50+strlen(buffer_liste));
 	sprintf(buffer, "Chemin : epaisseur=%d, couleur=%d, liste :\n%s", (int) get_epaisseur(c), get_couleur(c), buffer_liste);
 	free(buffer_liste);

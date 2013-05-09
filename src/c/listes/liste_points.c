@@ -90,6 +90,10 @@ char* listePointsToString(ListePoints l){
 	char* res = malloc(sizeof(char)*taille);
 	char* buffer = malloc(sizeof(char)*taille);
 	int new_taille = sprintf(buffer, "%s", toStringPoint(l->tab[0]));
+	if (l->nb < 2)
+	{
+		strncat(res, buffer, new_taille);
+	}
 	for(int i=1 ; i< l->nb ; i++){
 
 		while(new_taille > taille){			// Tant il y a plus de caractères à rajouter que de place disponible

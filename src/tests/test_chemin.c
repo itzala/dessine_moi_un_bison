@@ -9,7 +9,7 @@ int main(int argc, char const *argv[])
 	if(argc < 2){
 		x = 1;
 		y = 1;
-		nb = 0;
+		nb = 12;
 		largeur = 1;
 		couleur = 0;
 	}
