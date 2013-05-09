@@ -35,7 +35,7 @@ Chemin creer_chemin_test(int argc, const char** argv, int multi)
 		couleur = atoi(argv[5]);
 	}
 
-	Chemin c = creer_chemin_vide(largeur, couleur);
+	Chemin c = creer_chemin_vide(largeur, couleur, false);
 	Point p1 = creer_point(x, y);
 
 	for(int i=0 ; i<nb ; i++){

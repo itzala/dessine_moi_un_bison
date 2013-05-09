@@ -2,10 +2,11 @@
 #define _SURFACE_H_
 
 #include "liste_images.h"
+#include "util_cairo.h"
 
 typedef struct surface* Surface;
 
-Surface creer_surface(char* filename, int largeur, int longueur, char* type_surface);
+Surface creer_surface(cairo_t* contexte);
 void detruire_surface(Surface s);
 
 Surface ajouter_image_surface(Surface s, Image img);

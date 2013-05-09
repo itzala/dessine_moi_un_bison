@@ -7,10 +7,11 @@
 
 typedef struct chemin* Chemin;
 
-Chemin creer_chemin(double epaisseur, int couleur, ListePoints l);
-Chemin creer_chemin_vide(double epaisseur, int couleur);
+Chemin creer_chemin(double epaisseur, int couleur, ListePoints l, bool fill);
+Chemin creer_chemin_vide(double epaisseur, int couleur, bool fill);
 void detruire_chemin(Chemin c);
 
+bool est_rempli(Chemin c);
 Point* get_points_chemin(Chemin c);
 Point get_point_indice_chemin(Chemin c, int indice);
 double get_epaisseur(Chemin c);

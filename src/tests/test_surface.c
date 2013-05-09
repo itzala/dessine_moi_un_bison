@@ -32,7 +32,7 @@ Chemin creer_chemin_test(int argc, const char** argv, int multi)
 		couleur = atoi(argv[5]);
 	}
 
-	Chemin c = creer_chemin_vide(largeur, couleur);
+	Chemin c = creer_chemin_vide(largeur, couleur, false);
 	Point p1 = creer_point(x, y);
 
 	for(int i=0 ; i<nb ; i++){
@@ -56,7 +56,7 @@ Image creer_image_tests(int argc, const char** argv)
 	{
 		nb = atoi(argv[6]);
 	}
-	Image img = creer_image();
+	Image img = creer_image(false);
 	Chemin c = NULL;
 	for(int i=0 ; i<nb ; i++){
 		c = creer_chemin_test(argc-1, argv, i+1);
@@ -76,9 +76,9 @@ int main(int argc, char const *argv[])
 	
 	if(argc < 2){
 		nb = 2;
-		largeur = 20;
-		longueur = 20;		
-		strcpy(filename, "./ressources/essai.pdf");
+		largeur = 200;
+		longueur = 200;		
+		strcpy(filename, "../ressources/essai.pdf");
 		strcpy(type_surface, "pdf");
 	}
 	else if(argc == 10){
@@ -93,7 +93,13 @@ int main(int argc, char const *argv[])
 		return EXIT_FAILURE;
 	}
 
-	Surface s = creer_surface(filename, largeur, longueur, type_surface);
+	cairo_surface_t *surface;
+	cairo_t *cr;
+
+	surface = creer_cairo_surface(type_surface, filename, longueur, largeur);
+	cr = creer_cairo_contexte(surface, NULL);
+
+	Surface s = creer_surface(cr);
 	Image img = NULL;
 	for (int i = 0; i < nb; i++)
 	{
@@ -107,6 +113,8 @@ int main(int argc, char const *argv[])
 	surfaceToString(s);
 
 	detruire_surface(s);
+	cairo_surface_destroy(surface);
+	cairo_destroy(cr);
 
 	return EXIT_FAILURE;
 }

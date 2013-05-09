@@ -45,7 +45,7 @@ int main(int argc, char const *argv[])
 		printf("Erreur : nombre de paramètres invalide\n");
 		return EXIT_FAILURE;
 	}
-	Image img = creer_image();
+	Image img = creer_image(false);
 	imageToString(img);
 	Chemin c1 = NULL;
 	for(int i=0 ; i<nb_chemins ; i++){

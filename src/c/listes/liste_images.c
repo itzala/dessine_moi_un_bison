@@ -58,20 +58,6 @@ ListeImages ajouter_image_liste(ListeImages li, Image img)
 	return li;
 }
 
-void listeImagesToString(ListeImages li)
-{
-	for (int i = 0; i < li->nb; i++)
-	{
-		imageToString(li->tab[i]);
-	}
-}
-
-void dessiner_liste_images(ListeImages li, cairo_t * contexte)
-{
-	for(int i = 0; i < li->nb; i++)
-		dessiner_image(li->tab[i], contexte);	
-}
-
 Image get_image_indice(ListeImages li, int indice)
 {
 	if(!est_vide_liste_images(li)){
@@ -94,4 +80,39 @@ Image get_image_tete(ListeImages li)
 
 	printf("La liste est vide\n");	
 	return NULL;
+}
+
+Image get_image_queue(ListeImages li)
+{
+	if(!est_vide_liste_images(li))
+		return li->tab[li->nb-1];
+
+	printf("La liste est vide\n");	
+	return NULL;
+
+}
+
+
+ListeImages supprimer_image_queue_liste(ListeImages li)
+{
+	if (!est_vide_liste_images(li))
+	{
+		detruire_image(li->tab[li->nb-1]);
+		li->nb--;
+	}
+	return li;
+}
+
+void listeImagesToString(ListeImages li)
+{
+	for (int i = 0; i < li->nb; i++)
+	{
+		imageToString(li->tab[i]);
+	}
+}
+
+void dessiner_liste_images(ListeImages li, cairo_t * contexte)
+{
+	for(int i = 0; i < li->nb; i++)
+		dessiner_image(li->tab[i], contexte);	
 }

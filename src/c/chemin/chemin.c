@@ -5,23 +5,29 @@ struct chemin
 	ListePoints tab;
 	double epaisseur;
 	int couleur;
+	bool fill;
 };
 
-Chemin creer_chemin_vide(double epaisseur, int couleur){
-	return creer_chemin(epaisseur, couleur, NULL);
+Chemin creer_chemin_vide(double epaisseur, int couleur, bool fill){
+	return creer_chemin(epaisseur, couleur, NULL, fill);
 }
 
-Chemin creer_chemin(double epaisseur, int couleur, ListePoints l){
+Chemin creer_chemin(double epaisseur, int couleur, ListePoints l, bool fill){
 	Chemin c = (Chemin) malloc(sizeof(struct chemin));
 	c->tab = (l == NULL ? creer_liste_points() : clone_liste_points(l));
 	c->epaisseur = epaisseur;
 	c->couleur = couleur;
+	c->fill = fill;
 	return c;
 }
 
 void detruire_chemin(Chemin c){
 	detruire_liste_points(c->tab);
 	free(c);
+}
+
+bool est_rempli(Chemin c){
+	return c->fill;
 }
 
 ListePoints get_liste_points_chemin(Chemin c){
@@ -73,7 +79,7 @@ Chemin ajouter_point_chemin(Chemin c, Point p){
 
 
 Chemin clone(Chemin c){
-	Chemin copy = creer_chemin(get_epaisseur(c), get_couleur(c), get_liste_points_chemin(c));
+	Chemin copy = creer_chemin(get_epaisseur(c), get_couleur(c), get_liste_points_chemin(c), est_rempli(c));
 	// set_points(Chemin c, Point* l);
 	return copy;
 }

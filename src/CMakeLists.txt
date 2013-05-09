@@ -12,10 +12,12 @@ pkg_check_modules(
 	REQUIRED 
 	gtk+-3.0)
 
+set(DESSINE_BISON_BINARY_DIR "${DESSINE_BISON_SOURCE_DIR}/../bin/")
 
 # On ajoute les dossiers et définitions de GTK+
 include_directories(
 	${GTK3_INCLUDE_DIRS}
+	${CAIRO}
 	${DESSINE_BISON_SOURCE_DIR}/includes
 	${DESSINE_BISON_SOURCE_DIR}/includes/points
 	${DESSINE_BISON_SOURCE_DIR}/includes/chemin

@@ -3,28 +3,25 @@
 
 struct surface
 {
-	cairo_surface_t* espace;
 	cairo_t* contexte;
 	ListeImages tab;	
 };
 
-Surface creer_surface(char* filename, int largeur, int longueur, char* type_surface)
+Surface creer_surface(cairo_t* contexte)
 {
-	printf("Fichier à générer : %s (Attention, dans build)\n", filename);
-
-	Surface s = malloc(sizeof(struct surface));		
-	if (!strcmp(type_surface, "pdf"))
-		s->espace = cairo_pdf_surface_create(filename, largeur, longueur);
+	if (contexte != NULL)
+	{
+		Surface s = malloc(sizeof(struct surface));		
+		s->contexte = contexte;
+		s->tab = creer_liste_images();
+		return s;
+	}
 	else
 	{
-		printf("Type non géré pour l'instant... Seul le pdf est traité");
-		exit(EXIT_FAILURE);			
+		printf("Erreur ! Vous n'avez pas renseigné le contexte sur lequel dessiner\n");
+		exit(1);
+		return NULL;
 	}
-
-	s->contexte = cairo_create(s->espace);
-	s->tab = creer_liste_images();
-	
-	return s;
 }
 
 Surface ajouter_image_surface(Surface s, Image img)
@@ -46,7 +43,6 @@ Image get_image_indice_surface(Surface s, int indice)
 void detruire_surface(Surface s)
 {
 	cairo_destroy(s->contexte);
-	cairo_surface_destroy(s->espace);
 	detruire_liste_images(s->tab);
 	free(s);
 }

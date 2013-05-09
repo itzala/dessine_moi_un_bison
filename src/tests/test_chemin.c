@@ -25,7 +25,7 @@ int main(int argc, char const *argv[])
 		return EXIT_FAILURE;
 	}
 
-	Chemin c1 = creer_chemin(largeur, couleur, NULL);
+	Chemin c1 = creer_chemin(largeur, couleur, NULL, false);
 	Point p1 = creer_point(x, y);
 
 	for(int i=0 ; i<nb ; i++){
