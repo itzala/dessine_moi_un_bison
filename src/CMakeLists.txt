@@ -24,6 +24,7 @@ include_directories(
 	${DESSINE_BISON_SOURCE_DIR}/includes/image
 	${DESSINE_BISON_SOURCE_DIR}/includes/listes
 	${DESSINE_BISON_SOURCE_DIR}/includes/cairo
+	${DESSINE_BISON_SOURCE_DIR}/../bin/
 )
 
 
@@ -59,12 +60,12 @@ file(
 	source_files_parser
 	${DESSINE_BISON_SOURCE_DIR}/c/*)
 
-add_executable(Foo
+add_executable(dessine_moi_un_bison
   	${DESSINE_BISON_SOURCE_DIR}/../bin/lex.yy.c
 	${DESSINE_BISON_SOURCE_DIR}/../bin/y.tab.c
 	${source_files_parser}
 	)
-target_link_libraries(Foo
+target_link_libraries(dessine_moi_un_bison
 							${FLEX_LIBRARIES} 
 							${BISON_LIBRARIES}
 							${GTK3_LIBRARIES}
