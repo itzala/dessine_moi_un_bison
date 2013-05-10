@@ -69,7 +69,8 @@ file(
 	./test_liste_chemins.c
 	${DESSINE_BISON_SOURCE_DIR}/c/chemin/*
 	${DESSINE_BISON_SOURCE_DIR}/c/points/*
-	${DESSINE_BISON_SOURCE_DIR}/c/listes/*
+	${DESSINE_BISON_SOURCE_DIR}/c/listes/liste_points.c
+	${DESSINE_BISON_SOURCE_DIR}/c/listes/liste_chemins.c
 	${DESSINE_BISON_SOURCE_DIR}/c/image/*
 )
 
@@ -92,7 +93,9 @@ file(
 	GLOB_RECURSE
 	source_files_test_liste_images
 	./test_liste_images.c
-	${DESSINE_BISON_SOURCE_DIR}/c/listes/*
+	${DESSINE_BISON_SOURCE_DIR}/c/listes/liste_points.c
+	${DESSINE_BISON_SOURCE_DIR}/c/listes/liste_chemins.c
+	${DESSINE_BISON_SOURCE_DIR}/c/listes/liste_images.c
 	${DESSINE_BISON_SOURCE_DIR}/c/points/*
 	${DESSINE_BISON_SOURCE_DIR}/c/chemin/*
 	${DESSINE_BISON_SOURCE_DIR}/c/image/*
@@ -109,13 +112,15 @@ target_link_libraries(
 	cairo
 )
 
-# On créé l'exécutable test_liste_chemin
+# On créé l'exécutable test_surface
 
 file(
 	GLOB_RECURSE
 	source_files_test_surface
 	./test_surface.c
-	${DESSINE_BISON_SOURCE_DIR}/c/listes/*
+	${DESSINE_BISON_SOURCE_DIR}/c/listes/liste_points.c
+	${DESSINE_BISON_SOURCE_DIR}/c/listes/liste_chemins.c
+	${DESSINE_BISON_SOURCE_DIR}/c/listes/liste_images.c
 	${DESSINE_BISON_SOURCE_DIR}/c/points/*
 	${DESSINE_BISON_SOURCE_DIR}/c/chemin/*
 	${DESSINE_BISON_SOURCE_DIR}/c/image/*

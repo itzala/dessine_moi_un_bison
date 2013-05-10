@@ -19,10 +19,11 @@ include_directories(
 	${GTK3_INCLUDE_DIRS}
 	${CAIRO}
 	${DESSINE_BISON_SOURCE_DIR}/includes
+	${DESSINE_BISON_SOURCE_DIR}/includes/variable
+	${DESSINE_BISON_SOURCE_DIR}/includes/listes
 	${DESSINE_BISON_SOURCE_DIR}/includes/points
 	${DESSINE_BISON_SOURCE_DIR}/includes/chemin
 	${DESSINE_BISON_SOURCE_DIR}/includes/image
-	${DESSINE_BISON_SOURCE_DIR}/includes/listes
 	${DESSINE_BISON_SOURCE_DIR}/includes/cairo
 	${DESSINE_BISON_SOURCE_DIR}/../bin/
 )

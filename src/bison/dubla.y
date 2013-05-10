@@ -5,6 +5,8 @@
 
 
 #include "surface.h"
+#include "variable.h"
+#include "liste_variables.h"
 #include "dessine_moi_un_bison.h"
 
 extern FILE *yyin;
@@ -14,65 +16,93 @@ extern int yylex();
 %}
 
 %union{
-	void* ptr_p;
+	void* ptr;
 	double reel;
 	int booleen;
+	char* string;
 }
 
+%token VAR CHEMIN POINT_C REEL
 %token IMG
-%token VAR
 %token DRAW FILL
 
 %token POINT CYCLE
 %token DOUBLE COMMA
 
-%token DIGIT
+%token DIGIT ID
 
 %token PLUS DIV MINUS PROD
+%token EGAL EQUAL
 %token OPEN CLOSE TERM SEP_P END_FILE PAR_OP PAR_CLO
 
 %left PLUS MINUS
 %left PROD DIV
 
-%type <ptr_p> point
+%left EQUAL EGAL
+
+%type <ptr> point
 %type <booleen> sep_expr
 %type <reel> expression DIGIT
 
 %start fichier
 %%
 
-fichier : 		instruction
+fichier : 		instructions
+				;
+
+instructions :	instruction instructions
+				| VAR variable instructions
+				| {}
+				;
+
+variable :		type ID affect TERM 
+				;
+
+affect :		EGAL value
+				| {$<ptr>$ = NULL;}
+				;
+
+value :			expression
+				| instruction
+				;
+
+type :			IMG
+				| CHEMIN
+				| POINT
+				| REEL
 				;
 
 instruction :	DRAW 						{dub_creation_image(); 
-												$<ptr_p>$ = dub_creation_chemin(false);
+												$<ptr>$ = dub_creation_chemin(false);
 										 	} 
 					arguments 				{dub_ajout_chemin_image();
 												dub_ajout_image_surface();
 											} 
-							TERM instruction 
+							TERM 
 				| FILL 						{dub_creation_image(); 
-												$<ptr_p>$ = dub_creation_chemin(true);
+												$<ptr>$ = dub_creation_chemin(true);
 											}
 					arguments 				{dub_ajout_chemin_image();
 												dub_ajout_image_surface();
 											}
-							TERM instruction 
-				| IMG image instruction
-				| {}
+							TERM 
+				| image 					{$<ptr>$ = $<ptr>1; dub_ajout_image_surface();}
 				;
 
-img-instr :		DRAW 						{$<ptr_p>$ = dub_creation_chemin(false);}
+img-instrs :	img-instr img-instrs
+				| VAR variable img-instrs
+				| {}
+
+img-instr :		DRAW 						{$<ptr>$ = dub_creation_chemin(false);}
 					arguments 				{dub_ajout_image_surface();}
-							TERM img-instr 
-				| FILL 						{$<ptr_p>$ = dub_creation_chemin(true);}
+							TERM
+				| FILL 						{$<ptr>$ = dub_creation_chemin(true);}
 					arguments				{dub_ajout_image_surface();}
-							TERM img-instr 
-				| IMG image img-instr
-				| {}
+							TERM
+				| image 					{$<ptr>$ = $<ptr>1; dub_ajout_image_surface();}
 				;
 
-image :			{dub_creation_image();} OPEN img-instr CLOSE {dub_ajout_image_surface();} TERM
+image :			IMG {$<ptr>$ = dub_creation_image();} OPEN img-instrs CLOSE TERM
 				;
 
 arguments:		PAR_OP point PAR_CLO 				{dub_ajout_point_chemin($2);}

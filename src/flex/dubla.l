@@ -12,34 +12,47 @@ entier	[[:digit:]]+
 
 reel	{entier}("."{entier})?
 
+identifiant [[:alpha:]_][[:alnum:]_]*
+
 %%
 {blanks}	{}
 
-"{"			{return OPEN;}
-"}"			{return CLOSE;}
-"("			{return PAR_OP;}
-")"			{return PAR_CLO;}
-"+"			{return PLUS;}
-"-"			{return MINUS;}
-"*"			{return PROD;}
-"/"			{return DIV;}
+"{"				{return OPEN;}
+"}"				{return CLOSE;}
+"("				{return PAR_OP;}
+")"				{return PAR_CLO;}
+"+"				{return PLUS;}
+"-"				{return MINUS;}
+"*"				{return PROD;}
+"/"				{return DIV;}
+"="				{return EGAL;}
 
-"."			{return POINT;}
-{reel}		{yylval.reel = atof(yytext);
-			return DIGIT;}
+"=="			{return EQUAL;}
 
-"cycle"		{return CYCLE;}
-"var"		{return VAR;}
-"draw"		{return DRAW;}
-"fill"		{return FILL;}
-"image" 	{return IMG;}
+"."				{return POINT;}
+{reel}			{yylval.reel = atof(yytext);
+				return DIGIT;}
 
-":"	 		{return DOUBLE;}
-","			{return COMMA;}
+"var"			{return VAR;}
+"chemin"		{return CHEMIN;}
+"point"			{return POINT_C;}
+"reel"			{return REEL;}
+"cycle"			{return CYCLE;}
+"draw"			{return DRAW;}
+"fill"			{return FILL;}
+"image" 		{return IMG;}
 
-";"			{return TERM;}
+{identifiant}	{yylval.string = yytext;
+				return ID;}
 
-"--"		{return SEP_P;}
+":"	 			{return DOUBLE;}
+","				{return COMMA;}
 
+";"				{return TERM;}
+
+"--"			{return SEP_P;}
+
+\"				{}
+\'				{}
 
 %%

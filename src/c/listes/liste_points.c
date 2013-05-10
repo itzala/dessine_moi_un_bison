@@ -12,7 +12,7 @@ bool est_pleine(ListePoints l){
 	return l->nb >= l->max;
 }
 
-void rallonger_liste_chemins(ListePoints l){
+void rallonger_liste_points(ListePoints l){
 	l->max *= 2;
 	l->tab = (Point*) realloc(l->tab, sizeof(Point)*l->max);
 }
@@ -68,7 +68,7 @@ int get_nb_points(ListePoints l){
 
 ListePoints ajouter_point_liste(ListePoints l, Point p){
 	if(est_pleine(l)){
-		rallonger_liste_chemins(l);
+		rallonger_liste_points(l);
 	}
 	l->tab[l->nb] = clone_point(p);
 	l->nb++;

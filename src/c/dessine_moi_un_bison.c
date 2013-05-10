@@ -27,10 +27,11 @@ Chemin dub_creation_chemin(bool fill){
 	return c;
 }
 
-void dub_creation_image(){
+Image dub_creation_image(){
 	Image i = creer_image();
 	ajouter_image_liste(li, i);
 	detruire_image(i);
+	return get_image_queue(li);
 }
 
 void dub_ajout_point_chemin(Point p){
@@ -49,6 +50,28 @@ void dub_ajout_image_surface(){
 	supprimer_image_queue_liste(li);
 }
 
+void* dub_ajouter_element_variable(char* nom){
+	Variable v = get_variable_par_nom(lv, nom);
+	if (v != NULL)
+	{
+		if (!strcmp(get_type_variable(v), "image"))
+		{
+			dub_ajout_image_surface();
+		}
+		else if (!strcmp(get_type_variable(v), "chemin"))
+		{
+			dub_ajout_chemin_image();
+		}
+		else if (!strcmp(get_type_variable(v), "point"))
+		{
+			dub_ajout_point_chemin(get_value_variable(v));
+		}
+		return get_value_variable(v);
+
+	}
+	return NULL;
+}
+
 
 
 void error(){
@@ -59,7 +82,7 @@ void
 yyerror (char const *s)
 {
 	fprintf (stderr, "%s\n", s);
-	exit(1);
+	exit(EXIT_FAILURE);
 }
 
 
@@ -86,10 +109,9 @@ int main(int argc, char const *argv[])
 	epaisseur = 1.0;
 	couleur = 1;
 	est_premier_point_chemin = 1;
-	p = NULL;
-	premier_point_chemin = NULL;
 	c = NULL;
 	li = creer_liste_images();
+	lv = creer_liste_variables();
 	s = creer_surface(cr);
 	FILE *fichier_source = fopen(source, "r");
 	if (!fichier_source) {
@@ -102,6 +124,8 @@ int main(int argc, char const *argv[])
 		dessiner_surface(s);
 
 	detruire_surface(s);
+	detruire_liste_variables(lv);
+	detruire_liste_images(li);
 	cairo_destroy(cr);
 	cairo_surface_destroy(surface);
 
