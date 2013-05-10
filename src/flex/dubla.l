@@ -29,6 +29,8 @@ reel	{entier}("."{entier})?
 {reel}		{yylval.reel = atof(yytext);
 			return DIGIT;}
 
+"cycle"		{return CYCLE;}
+"var"		{return VAR;}
 "draw"		{return DRAW;}
 "fill"		{return FILL;}
 "image" 	{return IMG;}

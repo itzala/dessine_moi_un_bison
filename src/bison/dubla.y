@@ -34,7 +34,7 @@ int couleur = 1;
 }
 
 %token IMG
-
+%token VAR
 %token DRAW FILL
 
 %token POINT CYCLE
@@ -58,14 +58,53 @@ int couleur = 1;
 fichier : 		instruction
 				;
 
-instruction :	DRAW {creation_image(); $<ptr_p>$ = creer_chemin_vide(epaisseur, couleur, false); c = $<ptr_p>$;} arguments {ajouter_chemin_image(get_image_queue(li), c); detruire_chemin(c); c=NULL; ajout_image_surface();} TERM instruction 
-				| FILL {creation_image(); $<ptr_p>$ = creer_chemin_vide(epaisseur, couleur, true); c = $<ptr_p>$;} arguments {ajouter_chemin_image(get_image_queue(li), c); detruire_chemin(c); c=NULL; ajout_image_surface();} TERM instruction 
+instruction :	DRAW 						{creation_image(); 
+												$<ptr_p>$ = creer_chemin_vide(epaisseur, couleur, false); 
+												c = $<ptr_p>$; 
+												est_premier_point_chemin=1;
+										 	} 
+					arguments 				{ajouter_chemin_image(get_image_queue(li), c); 
+												detruire_chemin(c); detruire_point(premier_point_chemin); 
+												c=NULL;
+												ajout_image_surface();
+											} 
+							TERM instruction 
+				| FILL 						{creation_image(); 
+												$<ptr_p>$ = creer_chemin_vide(epaisseur, couleur, true);
+												c = $<ptr_p>$;
+												est_premier_point_chemin=1;
+											}
+					arguments 				{ajouter_chemin_image(get_image_queue(li), c);
+												detruire_chemin(c);
+												detruire_point(premier_point_chemin);
+												c=NULL;
+												ajout_image_surface();
+											}
+							TERM instruction 
 				| IMG image instruction
 				| {}
 				;
 
-img-instr :		DRAW {$<ptr_p>$ = creer_chemin_vide(epaisseur, couleur, false); c = $<ptr_p>$;} arguments {ajouter_chemin_image(get_image_queue(li), c); detruire_chemin(c); c=NULL;} TERM img-instr 
-				| FILL {$<ptr_p>$ = creer_chemin_vide(epaisseur, couleur, true); c = $<ptr_p>$;} arguments {ajouter_chemin_image(get_image_queue(li), c); detruire_chemin(c); c=NULL;} TERM img-instr 
+img-instr :		DRAW 						{$<ptr_p>$ = creer_chemin_vide(epaisseur, couleur, false);
+												c = $<ptr_p>$;
+												est_premier_point_chemin=1;
+											}
+					arguments 				{ajouter_chemin_image(get_image_queue(li), c);
+												detruire_chemin(c);
+												detruire_point(premier_point_chemin);
+												c=NULL;
+											}
+							TERM img-instr 
+				| FILL 						{$<ptr_p>$ = creer_chemin_vide(epaisseur, couleur, true);
+												c = $<ptr_p>$;
+												est_premier_point_chemin=1;
+											}
+					arguments				{ajouter_chemin_image(get_image_queue(li), c);
+												detruire_chemin(c);
+												detruire_point(premier_point_chemin);
+												c=NULL;
+											}
+							TERM img-instr 
 				| IMG image img-instr
 				| {}
 				;
@@ -73,7 +112,15 @@ img-instr :		DRAW {$<ptr_p>$ = creer_chemin_vide(epaisseur, couleur, false); c =
 image :			{creation_image();} OPEN img-instr CLOSE {ajout_image_surface();} TERM
 				;
 
-arguments:		PAR_OP point PAR_CLO {ajouter_point_chemin(c, $2); detruire_point($2);} suivant
+arguments:		PAR_OP point PAR_CLO 				{ajouter_point_chemin(c, $2);
+														if(est_premier_point_chemin)
+														{
+															premier_point_chemin=clone_point($2);
+															est_premier_point_chemin=0;
+														}
+														detruire_point($2);
+													}
+									suivant
 				;
 
 suivant :		SEP_P boucle
@@ -81,26 +128,27 @@ suivant :		SEP_P boucle
 				;
 
 boucle :		PLUS arguments
-				| CYCLE suivant
+				| CYCLE {ajouter_point_chemin(c, premier_point_chemin);} suivant
 				| arguments
 				;
 
-point :			expression sep_expr expression 	{if($1 < 0 || $3 < 0){
-													error();
-													$$ = NULL;
-												}
-												else{ 
-													if ($2 == 1){
-														$$ = creer_point_polaire($1, $3);
+point :			expression sep_expr expression 	{
+													if($1 < 0 || $3 < 0){
+														error();
+														$$ = NULL;
 													}
-													else {
-														$$ = creer_point($1, $3);
+													else{ 
+														if ($2 == 1){
+															$$ = creer_point_polaire($1, $3);
+														}
+														else {
+															$$ = creer_point($1, $3);
+														}
+														if (est_premier_point_chemin){
+															premier_point_chemin = clone_point($$);
+															est_premier_point_chemin = 0;
+														}
 													}
-													if (est_premier_point_chemin){
-														premier_point_chemin = clone_point($$);
-														est_premier_point_chemin = 0;
-													}
-												}
 												}
 				;
 
@@ -108,13 +156,12 @@ sep_expr :		DOUBLE 							{$$ = 1;}
 				| COMMA 						{$$ = 0;}
 				;
 
-expression :	DIGIT 							{$$ = $<reel>1;}
-				| PAR_OP expression PAR_CLO			{$$ = $<reel>2;}
+expression :	PAR_OP expression PAR_CLO		{$$ = $<reel>2;}
 				| expression MINUS expression 	{$$ = $<reel>1 - $<reel>2;}
 				| expression PLUS expression	{$$ = $<reel>1 + $<reel>2;}
 				| expression DIV expression		{$$ = $<reel>1 / $<reel>2;}
 				| expression PROD expression	{$$ = $<reel>1 * $<reel>2;}
-				| 	 							{$$ = -1.0;}
+				| DIGIT 						{$$ = $<reel>1;}
 				;
 
 
