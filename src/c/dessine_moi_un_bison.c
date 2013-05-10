@@ -14,7 +14,6 @@ Point dub_creation_point(double x, double y, int sep){
 			p = creer_point(x, y);
 		}
 		if (est_premier_point_chemin){
-			premier_point_chemin = clone_point(p);
 			est_premier_point_chemin = 0;
 		}
 	}
@@ -36,14 +35,12 @@ void dub_creation_image(){
 
 void dub_ajout_point_chemin(Point p){
 	ajouter_point_chemin(c, p);
-	detruire_point(p);
+	// detruire_point(p);
 }
 
 void dub_ajout_chemin_image(){
 	ajouter_chemin_image(get_image_queue(li), c);
 	detruire_chemin(c);
-	if(! est_premier_point_chemin)
-		detruire_point(premier_point_chemin);
 	c=NULL;
 }
 
@@ -94,7 +91,6 @@ int main(int argc, char const *argv[])
 	c = NULL;
 	li = creer_liste_images();
 	s = creer_surface(cr);
-
 	FILE *fichier_source = fopen(source, "r");
 	if (!fichier_source) {
 		printf("Le fichier %s est innaccessible\n", source);

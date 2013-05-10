@@ -24,7 +24,7 @@ Surface s;
 Point dub_creation_point(double x, double y, int sep);
 Chemin dub_creation_chemin(bool fill);
 void dub_creation_image();
-void dub_ajout_point_chemin();
+void dub_ajout_point_chemin(Point p);
 void dub_ajout_chemin_image();
 void dub_ajout_image_surface();
 void error();

@@ -75,7 +75,7 @@ img-instr :		DRAW 						{$<ptr_p>$ = dub_creation_chemin(false);}
 image :			{dub_creation_image();} OPEN img-instr CLOSE {dub_ajout_image_surface();} TERM
 				;
 
-arguments:		PAR_OP point PAR_CLO 				{dub_ajout_point_chemin();}
+arguments:		PAR_OP point PAR_CLO 				{dub_ajout_point_chemin($2);}
 									suivant
 				;
 
@@ -84,7 +84,7 @@ suivant :		SEP_P boucle
 				;
 
 boucle :		PLUS arguments
-				| CYCLE {ajouter_point_chemin(c, premier_point_chemin);} suivant
+				| CYCLE {ajouter_point_chemin(c, get_point_indice_chemin(c, 0));} suivant
 				| arguments
 				;
 
