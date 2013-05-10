@@ -50,26 +50,26 @@ extern int yylex();
 fichier : 		instructions
 				;
 
-instructions :	instruction instructions
-				| VAR variable instructions
+instructions :	VAR variable instructions
+				| instruction instructions
 				| {}
 				;
 
 variable :		type ID affect TERM 
 				;
 
-affect :		EGAL value
-				| {$<ptr>$ = NULL;}
+affect :		EGAL value		
+				| 				
 				;
 
-value :			expression
-				| instruction
+value :			expression		
+				| instruction	
 				;
 
-type :			IMG
-				| CHEMIN
-				| POINT
-				| REEL
+type :			IMG 		{$<ptr>$ = "image";}
+				| CHEMIN 	{$<ptr>$ = "chemin";}
+				| POINT 	{$<ptr>$ = "point";}
+				| REEL 		{$<ptr>$ = "reel";}
 				;
 
 instruction :	DRAW 						{dub_creation_image(); 
@@ -87,6 +87,7 @@ instruction :	DRAW 						{dub_creation_image();
 											}
 							TERM 
 				| image 					{$<ptr>$ = $<ptr>1; dub_ajout_image_surface();}
+				| ID TERM					
 				;
 
 img-instrs :	img-instr img-instrs
@@ -100,6 +101,7 @@ img-instr :		DRAW 						{$<ptr>$ = dub_creation_chemin(false);}
 					arguments				{dub_ajout_image_surface();}
 							TERM
 				| image 					{$<ptr>$ = $<ptr>1; dub_ajout_image_surface();}
+				| ID TERM					
 				;
 
 image :			IMG {$<ptr>$ = dub_creation_image();} OPEN img-instrs CLOSE TERM

@@ -13,7 +13,7 @@ pkg_check_modules(
 	gtk+-3.0)
 
 set(DESSINE_BISON_BINARY_DIR "${DESSINE_BISON_SOURCE_DIR}/../bin/")
-
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${DESSINE_BISON_BINARY_DIR}")
 # On ajoute les dossiers et définitions de GTK+
 include_directories(
 	${GTK3_INCLUDE_DIRS}
@@ -25,7 +25,7 @@ include_directories(
 	${DESSINE_BISON_SOURCE_DIR}/includes/chemin
 	${DESSINE_BISON_SOURCE_DIR}/includes/image
 	${DESSINE_BISON_SOURCE_DIR}/includes/cairo
-	${DESSINE_BISON_SOURCE_DIR}/../bin/
+	${DESSINE_BISON_SOURCE_DIR}/bison/
 )
 
 
@@ -48,11 +48,11 @@ find_package(FLEX)
 
 BISON_TARGET(DublaParser 
 			${DESSINE_BISON_SOURCE_DIR}/bison/dubla.y 
-			${DESSINE_BISON_SOURCE_DIR}/../bin/y.tab.c)
+			${DESSINE_BISON_SOURCE_DIR}/bison/y.tab.c)
 
 FLEX_TARGET(ScannerDubla 
 			${DESSINE_BISON_SOURCE_DIR}/flex/dubla.l 
-			${DESSINE_BISON_SOURCE_DIR}/../bin/lex.yy.c)
+			${DESSINE_BISON_SOURCE_DIR}/flex/lex.yy.c)
 
 ADD_FLEX_BISON_DEPENDENCY(ScannerDubla DublaParser)
 
@@ -62,8 +62,8 @@ file(
 	${DESSINE_BISON_SOURCE_DIR}/c/*)
 
 add_executable(dessine_moi_un_bison
-  	${DESSINE_BISON_SOURCE_DIR}/../bin/lex.yy.c
-	${DESSINE_BISON_SOURCE_DIR}/../bin/y.tab.c
+  	${DESSINE_BISON_SOURCE_DIR}/flex/lex.yy.c
+	${DESSINE_BISON_SOURCE_DIR}/bison/y.tab.c
 	${source_files_parser}
 	)
 target_link_libraries(dessine_moi_un_bison

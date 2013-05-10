@@ -84,6 +84,7 @@ ListeVariables ajouter_variable_liste(ListeVariables l, Variable p){
 		rallonger_liste_variables(l);
 	}
 	l->tab[l->nb] = clone_variable(p);
+	printf("%s ajoutée\n", get_nom_variable(l->tab[l->nb]));
 	l->nb++;
 	return l;
 }

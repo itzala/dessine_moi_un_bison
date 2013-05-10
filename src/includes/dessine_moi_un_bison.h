@@ -20,7 +20,7 @@ Chemin c;
 ListeImages li;
 ListeVariables lv;
 Surface s;
-
+void* value;
 
 Point dub_creation_point(double x, double y, int sep);
 Chemin dub_creation_chemin(bool fill);
