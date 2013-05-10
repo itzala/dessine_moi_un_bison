@@ -1,0 +1,16 @@
+\select@language {french}
+\contentsline {section}{\numberline {1}Pr\IeC {\'e}sentation du projet}{2}
+\contentsline {subsection}{\numberline {1.1}Analyse lexicale et syntaxique}{2}
+\contentsline {subsection}{\numberline {1.2}Librairie de dessin : Cairo}{2}
+\contentsline {subsection}{\numberline {1.3}Analyse lexicale : Flex}{2}
+\contentsline {subsection}{\numberline {1.4}Analyse syntaxique : Bison}{2}
+\contentsline {subsection}{\numberline {1.5}Sujet du projet}{2}
+\contentsline {section}{\numberline {2}Architecture logicielle}{3}
+\contentsline {section}{\numberline {3}Fonctionnalit\IeC {\'e}s}{4}
+\contentsline {subsection}{\numberline {3.1}Commandes reconnues}{4}
+\contentsline {subsection}{\numberline {3.2}Lignes bris\IeC {\'e}es}{4}
+\contentsline {subsection}{\numberline {3.3}Remplissage de formes}{4}
+\contentsline {subsection}{\numberline {3.4}Utilisation des variables}{4}
+\contentsline {subsection}{\numberline {3.5}Images}{5}
+\contentsline {section}{\numberline {4}Probl\IeC {\`e}mes rencontr\IeC {\'e}s}{6}
+\contentsline {section}{\numberline {5}Conclusion}{6}
