@@ -18,11 +18,13 @@ Point get_point_indice_chemin(Chemin c, int indice);
 double get_epaisseur(Chemin c);
 int get_couleur(Chemin c);
 int get_nb_points_chemin(Chemin c);
+ListePoints get_liste_points_chemin(Chemin c);
 
 // Chemin set_points(Chemin c, Point* l);
 Chemin set_epaisseur(Chemin c, double epaisseur);
 Chemin set_couleur(Chemin c, int couleur);
 Chemin set_fill(Chemin c, bool fill);
+Chemin set_points(Chemin c, ListePoints lp);
 
 Chemin ajouter_point_chemin(Chemin c, Point p);
 

@@ -58,14 +58,14 @@ int couleur = 1;
 fichier : 		instruction
 				;
 
-instruction :	DRAW {creation_image(); c = creer_chemin_vide(epaisseur, couleur, false); printf("%s\n", toStringChemin(c));} arguments {ajouter_chemin_image(i, c);detruire_chemin(c); ajout_image_surface();} TERM instruction 
-				| FILL {creation_image(); c = creer_chemin_vide(epaisseur, couleur, true);} arguments {ajouter_chemin_image(i, c);detruire_chemin(c); ajout_image_surface();} TERM instruction 
+instruction :	DRAW {creation_image(); $<ptr_p>$ = creer_chemin_vide(epaisseur, couleur, false); c = $<ptr_p>$;} arguments {ajouter_chemin_image(get_image_queue(li), c); detruire_chemin(c); c=NULL; ajout_image_surface();} TERM instruction 
+				| FILL {creation_image(); $<ptr_p>$ = creer_chemin_vide(epaisseur, couleur, true); c = $<ptr_p>$;} arguments {ajouter_chemin_image(get_image_queue(li), c); detruire_chemin(c); c=NULL; ajout_image_surface();} TERM instruction 
 				| IMG image instruction
 				| {}
 				;
 
-img-instr :		DRAW {c = creer_chemin_vide(epaisseur, couleur, false);} arguments {ajouter_chemin_image(i, c); detruire_chemin(c);} TERM img-instr 
-				| FILL {c = creer_chemin_vide(epaisseur, couleur, true);} arguments {ajouter_chemin_image(i, c); detruire_chemin(c);} TERM img-instr 
+img-instr :		DRAW {$<ptr_p>$ = creer_chemin_vide(epaisseur, couleur, false); c = $<ptr_p>$;} arguments {ajouter_chemin_image(get_image_queue(li), c); detruire_chemin(c); c=NULL;} TERM img-instr 
+				| FILL {$<ptr_p>$ = creer_chemin_vide(epaisseur, couleur, true); c = $<ptr_p>$;} arguments {ajouter_chemin_image(get_image_queue(li), c); detruire_chemin(c); c=NULL;} TERM img-instr 
 				| IMG image img-instr
 				| {}
 				;
@@ -73,7 +73,7 @@ img-instr :		DRAW {c = creer_chemin_vide(epaisseur, couleur, false);} arguments 
 image :			{creation_image();} OPEN img-instr CLOSE {ajout_image_surface();} TERM
 				;
 
-arguments:		PAR_OP point PAR_CLO {printf("\n\najouter_point_chemin(%s,c)\n", toStringPoint($2)); ajouter_point_chemin(c, $2); printf("%s\n", toStringChemin(c)); detruire_point($2);} suivant
+arguments:		PAR_OP point PAR_CLO {ajouter_point_chemin(c, $2); detruire_point($2);} suivant
 				;
 
 suivant :		SEP_P boucle
@@ -157,24 +157,19 @@ int main(int argc, char** argv){
 	s = creer_surface(cr);
 	li = creer_liste_images();
 
-	// open a file handle to a particular file:
-	FILE *myfile = fopen(source, "r");
-	// make sure it is valid:
-	if (!myfile) {
+	FILE *fichier_source = fopen(source, "r");
+	if (!fichier_source) {
 		printf("Le fichier %s est innaccessible\n", source);
 		return EXIT_FAILURE;
 	}
-	// set flex to read from it instead of defaulting to STDIN:
-	yyin = myfile;
+	yyin = fichier_source;
 
 	if(!yyparse())
-		surfaceToString(s);
 		dessiner_surface(s);
 
-
 	detruire_surface(s);
-
-	/* quelle commande a été trouvée ?*/
+	cairo_destroy(cr);
+	cairo_surface_destroy(surface);
 
 	return EXIT_SUCCESS;
 }
@@ -198,7 +193,6 @@ void creation_image(){
 }
 
 void ajout_image_surface(){
-	imageToString(get_image_queue(li));
 	ajouter_image_surface(s, get_image_queue(li));
 	supprimer_image_queue_liste(li);
 }

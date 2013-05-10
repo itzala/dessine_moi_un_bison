@@ -53,7 +53,7 @@ int main(int argc, char const *argv[])
 {
 	int nb;
 	if(argc < 2){
-		nb = 12;
+		nb = 25;
 	}
 	else if(argc == 7){
 		nb = atoi(argv[6]);
@@ -67,12 +67,14 @@ int main(int argc, char const *argv[])
 	Chemin c = NULL;
 	for(int i=0 ; i<nb ; i++)
 	{
-		c = creer_chemin_test(argc, argv, (i + 1));
+		c = creer_chemin_test(argc, argv, (i + 2)%6);
 		ajouter_chemin_liste(lc, c);
 		detruire_chemin(c);
 	}
 	listeCheminsToString(lc);
 	ListeChemins cp = clone_liste_chemins(lc);
+	printf("\n");
+	printf("\n");
 	listeCheminsToString(cp);
 	detruire_liste_chemins(lc);
 	return EXIT_SUCCESS;

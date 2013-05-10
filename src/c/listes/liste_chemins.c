@@ -52,9 +52,8 @@ Chemin get_chemin_tete(ListeChemins l){
 
 Chemin get_chemin_indice(ListeChemins l, int indice){
 	if(!est_vide_liste_chemins(l)){
-		int nb_neg = l->nb * (-1);
-		if (abs(indice) < l->nb || indice == nb_neg){
-			return l->tab[(l->nb + indice)%l->nb];
+		if (!(indice < 0 || indice > l->nb)){
+			return l->tab[indice];
 		}
 		printf("L'indice %d est hors limites\n", indice);
 	}
@@ -85,12 +84,8 @@ bool est_vide_liste_chemins(ListeChemins l){
 	return l->nb < 1;
 }
 
-int get_nb_chemins(ListeChemins l)
-{
-	return l->nb;
-}
-
 void listeCheminsToString(ListeChemins l){
+	printf("Nb chemins=%d\n", get_nb_chemins_liste(l));
 	if (est_vide_liste_chemins(l))
 	{
 		printf("Aucun chemin\n");

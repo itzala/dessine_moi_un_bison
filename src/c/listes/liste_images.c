@@ -105,6 +105,7 @@ ListeImages supprimer_image_queue_liste(ListeImages li)
 
 void listeImagesToString(ListeImages li)
 {
+	printf("Nb images=%d\n", li->nb);
 	for (int i = 0; i < li->nb; i++)
 	{
 		imageToString(li->tab[i]);

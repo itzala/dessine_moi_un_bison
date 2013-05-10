@@ -21,6 +21,11 @@ Chemin creer_chemin(double epaisseur, int couleur, ListePoints l, bool fill){
 	return c;
 }
 
+Chemin clone(Chemin c){
+	Chemin copy = creer_chemin(get_epaisseur(c), get_couleur(c), get_liste_points_chemin(c), est_rempli(c));
+	return copy;
+}
+
 Chemin vider_chemin(Chemin c){
 	detruire_liste_points(c->tab);
 	c->tab = creer_liste_points();
@@ -62,9 +67,11 @@ int get_nb_points_chemin(Chemin c){
 }
 
 
-// Chemin set_points(Chemin c, Point* l){
-
-// }
+Chemin set_points(Chemin c, ListePoints lp){
+	detruire_liste_points(c->tab);
+	c->tab = clone_liste_points(lp);
+	return c;
+}
 
 Chemin set_epaisseur(Chemin c, double epaisseur){
 	c->epaisseur = epaisseur;
@@ -88,21 +95,14 @@ Chemin ajouter_point_chemin(Chemin c, Point p){
 }
 
 
-Chemin clone(Chemin c){
-	Chemin copy = creer_chemin(get_epaisseur(c), get_couleur(c), get_liste_points_chemin(c), est_rempli(c));
-	// set_points(Chemin c, Point* l);
-	return copy;
-}
-
 char* toStringChemin(Chemin c){
 	if (est_vide_liste_points(c->tab))
 	{
 		return "Chemin vide";
 	}
 	char* buffer_liste = listePointsToString(c->tab);
-	printf("%s\n", buffer_liste);
 	char* buffer = malloc(sizeof(char)*50+strlen(buffer_liste));
-	sprintf(buffer, "Chemin : epaisseur=%d, couleur=%d, liste :\n%s", (int) get_epaisseur(c), get_couleur(c), buffer_liste);
+	sprintf(buffer, "Chemin : epaisseur=%d, couleur=%d, liste (len=%d) :\n%s", (int) get_epaisseur(c), get_couleur(c), get_nb_points_chemin(c), buffer_liste);
 	free(buffer_liste);
 	buffer = realloc(buffer, sizeof(char)*strlen(buffer));
 	return buffer;
@@ -114,8 +114,6 @@ void dessiner_chemin(Chemin c, cairo_t * contexte)
 	Point p = get_point_tete(c->tab); 
 	x = get_abscisse(p);
 	y = get_ordonnee(p);
-	printf("\tDessin du chemin\n");
-	printf("\t\tTracé du point %d, %d\n", x, y);
 	
 	cairo_move_to(contexte, x, y);
 
@@ -125,9 +123,15 @@ void dessiner_chemin(Chemin c, cairo_t * contexte)
 		p = get_point_indice(c->tab, i); 
 		x = get_abscisse(p);
 		y = get_ordonnee(p);
-		printf("\t\tTracé du point %d, %d\n", x, y);
 		cairo_line_to(contexte, x, y);
 	}
-	printf("\t\tActivation de l'épaisseur : %lf\n\n", c->epaisseur);
 	cairo_set_line_width(contexte, c->epaisseur);
+	if (c->fill)
+	{
+		cairo_fill(contexte);
+	}
+	else
+	{
+		cairo_stroke(contexte);
+	}
 }

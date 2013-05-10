@@ -9,7 +9,7 @@ int main(int argc, char const *argv[])
 	if(argc < 2){
 		x = 1;
 		y = 1;
-		nb = 12;
+		nb = 1;
 	}
 	else if(argc == 4){
 		x = atoi(argv[1]);
@@ -26,8 +26,8 @@ int main(int argc, char const *argv[])
 	for(int i=0 ; i<nb ; i++){
 		p = creer_point(x, y);
 		ajouter_point_liste(lp, p);
-		x *= 2;
-		y *= 2;
+		x *= 3;
+		y *= 3;
 		detruire_point(p);
 	}
 	printf("%s\n", listePointsToString(lp));

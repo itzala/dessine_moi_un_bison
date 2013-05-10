@@ -42,7 +42,6 @@ Image get_image_indice_surface(Surface s, int indice)
 
 void detruire_surface(Surface s)
 {
-	cairo_destroy(s->contexte);
 	detruire_liste_images(s->tab);
 	free(s);
 }
@@ -55,8 +54,5 @@ void surfaceToString(Surface s)
 Surface dessiner_surface(Surface s)
 {
 	dessiner_liste_images(s->tab, s->contexte);
-
-	cairo_stroke(s->contexte);
-
 	return s;
 }

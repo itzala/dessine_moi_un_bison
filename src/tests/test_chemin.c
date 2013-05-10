@@ -9,7 +9,7 @@ int main(int argc, char const *argv[])
 	if(argc < 2){
 		x = 1;
 		y = 1;
-		nb = 12;
+		nb = 10;
 		largeur = 1;
 		couleur = 0;
 	}
@@ -36,7 +36,7 @@ int main(int argc, char const *argv[])
 		p1 = creer_point(x,y);
 	}
 	printf("%s\n", toStringChemin(c1));
-
+	printf("%s\n", toStringChemin(clone(c1)));
 
 
 

@@ -47,9 +47,8 @@ Point get_point_tete(ListePoints l){
 
 Point get_point_indice(ListePoints l, int indice){
 	if(!est_vide_liste_points(l)){
-		int nb_neg = l->nb * (-1);
-		if (abs(indice) < l->nb || indice == nb_neg){
-			return l->tab[(l->nb + indice)%l->nb];
+		if (!(indice < 0 || indice >= l->nb)){
+			return l->tab[indice];
 		}
 		printf("L'indice %d est hors limites\n", indice);
 	}
@@ -90,23 +89,18 @@ char* listePointsToString(ListePoints l){
 	char* res = malloc(sizeof(char)*taille);
 	char* buffer = malloc(sizeof(char)*taille);
 	int new_taille = sprintf(buffer, "%s", toStringPoint(l->tab[0]));
-	if (l->nb < 2)
-	{
-		strncat(res, buffer, new_taille);
-	}
-	for(int i=1 ; i< l->nb ; i++){
-
+	for(int i=0 ; i< l->nb ; i++){
+		new_taille = sprintf(buffer, "%s", toStringPoint(l->tab[i]));
 		while(new_taille > taille){			// Tant il y a plus de caractères à rajouter que de place disponible
 			taille *= 2;					// On double la place disponible
 			if(new_taille < taille){
-				taille_ini += taille;
-				res = realloc(res, taille_ini*sizeof(char));
+				taille_ini += taille;							// On ajoute la nouvelle place disponible à la taille initiale
+				res = realloc(res, taille_ini*sizeof(char));	// On réalloue le tableau
 			}
 		}
 
-		strncat(res, buffer, new_taille);
+		strncat(res, buffer, new_taille);								// 
 		taille -= new_taille;
-		new_taille = sprintf(buffer, ", %s", toStringPoint(l->tab[i]));
 	}
 	free(buffer);
 	return res;
