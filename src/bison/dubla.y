@@ -50,12 +50,12 @@ extern int yylex();
 fichier : 		instructions
 				;
 
-instructions :	VAR variable instructions
-				| instruction instructions
+instructions :	VAR variable TERM instructions
+				| instruction TERM instructions
 				| {}
 				;
 
-variable :		type ID affect TERM 
+variable :		type ID affect
 				;
 
 affect :		EGAL value		
@@ -63,7 +63,7 @@ affect :		EGAL value
 				;
 
 value :			expression		
-				| instruction	
+				| instruction
 				;
 
 type :			IMG 		{$<ptr>$ = "image";}
@@ -78,16 +78,16 @@ instruction :	DRAW 						{dub_creation_image();
 					arguments 				{dub_ajout_chemin_image();
 												dub_ajout_image_surface();
 											} 
-							TERM 
+							
 				| FILL 						{dub_creation_image(); 
 												$<ptr>$ = dub_creation_chemin(true);
 											}
 					arguments 				{dub_ajout_chemin_image();
 												dub_ajout_image_surface();
 											}
-							TERM 
+							
 				| image 					{$<ptr>$ = $<ptr>1; dub_ajout_image_surface();}
-				| ID TERM					
+				| ID 				
 				;
 
 img-instrs :	img-instr img-instrs
@@ -96,15 +96,15 @@ img-instrs :	img-instr img-instrs
 
 img-instr :		DRAW 						{$<ptr>$ = dub_creation_chemin(false);}
 					arguments 				{dub_ajout_image_surface();}
-							TERM
+							
 				| FILL 						{$<ptr>$ = dub_creation_chemin(true);}
 					arguments				{dub_ajout_image_surface();}
-							TERM
+							
 				| image 					{$<ptr>$ = $<ptr>1; dub_ajout_image_surface();}
-				| ID TERM					
+				| ID 				
 				;
 
-image :			IMG {$<ptr>$ = dub_creation_image();} OPEN img-instrs CLOSE TERM
+image :			IMG {$<ptr>$ = dub_creation_image();} OPEN img-instrs CLOSE
 				;
 
 arguments:		PAR_OP point PAR_CLO 				{dub_ajout_point_chemin($2);}

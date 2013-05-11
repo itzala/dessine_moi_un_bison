@@ -6,7 +6,7 @@ int fileno();
 %}
 %option nounput
 
-blanks	[ \t\n]
+blanks	[ \t\n]+
 
 entier	[[:digit:]]+
 
@@ -29,6 +29,13 @@ identifiant [[:alpha:]_][[:alnum:]_]*
 
 "=="			{return EQUAL;}
 
+":"	 			{return DOUBLE;}
+","				{return COMMA;}
+
+";"				{return TERM;}
+
+"--"			{return SEP_P;}
+
 "."				{return POINT;}
 {reel}			{yylval.reel = atof(yytext);
 				return DIGIT;}
@@ -44,13 +51,6 @@ identifiant [[:alpha:]_][[:alnum:]_]*
 
 {identifiant}	{yylval.string = yytext;
 				return ID;}
-
-":"	 			{return DOUBLE;}
-","				{return COMMA;}
-
-";"				{return TERM;}
-
-"--"			{return SEP_P;}
 
 \"				{}
 \'				{}
