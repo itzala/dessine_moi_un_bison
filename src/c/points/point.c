@@ -40,6 +40,24 @@ double get_ordonnee(Point p){
 	return get_ordonnee_cartesien(p->p);
 }
 
+Point set_abscisse(Point p, double x){
+	set_abscisse_cartesien(p->p, x);
+	return p;
+}
+
+Point set_ordonnee(Point p, double y){
+	set_ordonnee_cartesien(p->p, y);
+	return p;
+}
+
+
+/* Attention : la fonction modifie la base (base += ajout) */
+Point somme_point(Point base, Point ajout){
+	set_abscisse(base, get_abscisse(base) + get_abscisse(ajout));
+	set_ordonnee(base, get_ordonnee(base) + get_ordonnee(ajout));
+	return base;
+}
+
 
 
 Cartesien polaire_vers_cartesien(Polaire p){

@@ -45,6 +45,13 @@ Point get_point_tete(ListePoints l){
 	return NULL;
 }
 
+Point get_point_queue(ListePoints l){
+	if(! est_vide_liste_points(l)){
+		return l->tab[l->nb-1];
+	}
+	return NULL;
+}
+
 Point get_point_indice(ListePoints l, int indice){
 	if(!est_vide_liste_points(l)){
 		if (!(indice < 0 || indice >= l->nb)){

@@ -19,7 +19,11 @@ void detruire_point(Point p);
 
 double get_abscisse(Point p);
 double get_ordonnee(Point p);
+Point set_abscisse(Point p, double x);
+Point set_ordonnee(Point p, double y);
 
+/* Attention : la fonction modifie la base (base += ajout) */
+Point somme_point(Point base, Point ajout);
 
 Cartesien polaire_vers_cartesien(Polaire p);
 Polaire cartesien_vers_polaire(Cartesien p);

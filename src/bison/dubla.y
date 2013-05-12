@@ -115,8 +115,8 @@ suivant :		SEP_P boucle
 				| {}
 				;
 
-boucle :		PLUS arguments
-				| CYCLE {ajouter_point_chemin(c, get_point_indice_chemin(c, 0));} suivant
+boucle :		PLUS PAR_OP point PAR_CLO {dub_ajout_point_chemin(somme_point($3, get_point_queue(get_liste_points_chemin(c))));} suivant
+				| CYCLE 							{ajouter_point_chemin(c, get_point_indice_chemin(c, 0));} suivant
 				| arguments
 				;
 

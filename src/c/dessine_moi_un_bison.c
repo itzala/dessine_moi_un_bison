@@ -21,8 +21,7 @@ Point dub_creation_point(double x, double y, int sep){
 }
 
 Chemin dub_creation_chemin(bool fill){
-	Chemin tmp = creer_chemin_vide(epaisseur, couleur, fill); 
-	c = tmp; 
+	c = creer_chemin_vide(epaisseur, couleur, fill); 
 	est_premier_point_chemin=1;
 	return c;
 }
