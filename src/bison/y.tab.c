@@ -66,7 +66,7 @@
 /* Copy the first part of user declarations.  */
 
 /* Line 268 of yacc.c  */
-#line 1 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 1 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -85,7 +85,7 @@ extern int yylex();
 
 
 /* Line 268 of yacc.c  */
-#line 89 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/y.tab.c"
+#line 89 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/y.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -148,7 +148,7 @@ typedef union YYSTYPE
 {
 
 /* Line 293 of yacc.c  */
-#line 18 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 18 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
 
 	void* ptr;
 	double reel;
@@ -158,7 +158,7 @@ typedef union YYSTYPE
 
 
 /* Line 293 of yacc.c  */
-#line 162 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/y.tab.c"
+#line 162 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/y.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -170,7 +170,7 @@ typedef union YYSTYPE
 
 
 /* Line 343 of yacc.c  */
-#line 174 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/y.tab.c"
+#line 174 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/y.tab.c"
 
 #ifdef short
 # undef short
@@ -387,18 +387,18 @@ union yyalloc
 #endif /* !YYCOPY_NEEDED */
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  19
+#define YYFINAL  21
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   79
+#define YYLAST   91
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  29
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  25
+#define YYNNTS  26
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  50
+#define YYNRULES  53
 /* YYNRULES -- Number of states.  */
-#define YYNSTATES  84
+#define YYNSTATES  91
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
@@ -446,42 +446,43 @@ static const yytype_uint8 yytranslate[] =
    YYRHS.  */
 static const yytype_uint8 yyprhs[] =
 {
-       0,     0,     3,     5,    10,    14,    15,    19,    22,    23,
-      25,    27,    29,    31,    33,    35,    36,    40,    41,    45,
-      47,    49,    52,    56,    57,    58,    62,    63,    67,    69,
-      71,    72,    78,    79,    85,    88,    89,    90,    97,    98,
-     102,   104,   108,   110,   112,   116,   119,   123,   127,   131,
-     135
+       0,     0,     3,     5,    10,    14,    15,    16,    21,    24,
+      25,    27,    29,    31,    33,    35,    37,    38,    42,    43,
+      47,    49,    52,    55,    59,    60,    61,    65,    66,    70,
+      72,    75,    76,    82,    83,    89,    92,    95,    96,    97,
+     104,   105,   109,   111,   115,   117,   119,   123,   126,   130,
+     134,   138,   142,   144
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int8 yyrhs[] =
 {
       30,     0,    -1,    31,    -1,     3,    32,    24,    31,    -1,
-      36,    24,    31,    -1,    -1,    35,    15,    33,    -1,    20,
-      34,    -1,    -1,    53,    -1,    36,    -1,     7,    -1,     4,
-      -1,    10,    -1,     6,    -1,    -1,     8,    37,    45,    -1,
-      -1,     9,    38,    45,    -1,    43,    -1,    15,    -1,    40,
-      39,    -1,     3,    32,    39,    -1,    -1,    -1,     8,    41,
-      45,    -1,    -1,     9,    42,    45,    -1,    43,    -1,    15,
-      -1,    -1,     7,    44,    22,    39,    23,    -1,    -1,    27,
-      51,    28,    46,    47,    -1,    25,    48,    -1,    -1,    -1,
-      16,    27,    51,    28,    49,    47,    -1,    -1,    11,    50,
-      47,    -1,    45,    -1,    53,    52,    53,    -1,    12,    -1,
-      13,    -1,    27,    53,    28,    -1,    18,    53,    -1,    53,
-      18,    53,    -1,    53,    16,    53,    -1,    53,    17,    53,
-      -1,    53,    19,    53,    -1,    14,    -1
+      37,    24,    31,    -1,    -1,    -1,    36,    15,    33,    34,
+      -1,    20,    35,    -1,    -1,    54,    -1,    37,    -1,     7,
+      -1,     4,    -1,    10,    -1,     6,    -1,    -1,     8,    38,
+      46,    -1,    -1,     9,    39,    46,    -1,    44,    -1,    15,
+      34,    -1,    41,    40,    -1,     3,    32,    40,    -1,    -1,
+      -1,     8,    42,    46,    -1,    -1,     9,    43,    46,    -1,
+      44,    -1,    15,    34,    -1,    -1,     7,    45,    22,    40,
+      23,    -1,    -1,    27,    52,    28,    47,    48,    -1,    15,
+      48,    -1,    25,    49,    -1,    -1,    -1,    16,    27,    52,
+      28,    50,    48,    -1,    -1,    11,    51,    48,    -1,    46,
+      -1,    54,    53,    54,    -1,    12,    -1,    13,    -1,    27,
+      54,    28,    -1,    18,    54,    -1,    54,    18,    54,    -1,
+      54,    16,    54,    -1,    54,    17,    54,    -1,    54,    19,
+      54,    -1,    14,    -1,    15,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    50,    50,    53,    54,    55,    58,    61,    62,    65,
-      66,    69,    70,    71,    72,    75,    75,    82,    82,    89,
-      90,    93,    94,    95,    97,    97,   100,   100,   103,   104,
-     107,   107,   110,   110,   114,   115,   118,   118,   119,   119,
-     120,   123,   127,   128,   131,   132,   133,   134,   135,   136,
-     137
+       0,    50,    50,    53,    54,    55,    58,    58,    68,    69,
+      72,    73,    76,    77,    78,    79,    82,    82,    89,    89,
+      96,    97,   100,   101,   102,   104,   104,   107,   107,   110,
+     111,   114,   114,   117,   117,   119,   122,   123,   126,   126,
+     128,   128,   130,   133,   137,   138,   141,   142,   143,   144,
+     145,   146,   147,   148
 };
 #endif
 
@@ -494,10 +495,10 @@ static const char *const yytname[] =
   "IMG", "DRAW", "FILL", "POINT", "CYCLE", "DOUBLE", "COMMA", "DIGIT",
   "ID", "PLUS", "DIV", "MINUS", "PROD", "EGAL", "EQUAL", "OPEN", "CLOSE",
   "TERM", "SEP_P", "END_FILE", "PAR_OP", "PAR_CLO", "$accept", "fichier",
-  "instructions", "variable", "affect", "value", "type", "instruction",
-  "@1", "@2", "img-instrs", "img-instr", "@3", "@4", "image", "@5",
-  "arguments", "$@6", "suivant", "boucle", "$@7", "$@8", "point",
-  "sep_expr", "expression", 0
+  "instructions", "variable", "@1", "affect", "value", "type",
+  "instruction", "@2", "@3", "img-instrs", "img-instr", "@4", "@5",
+  "image", "@6", "arguments", "$@7", "suivant", "boucle", "$@8", "$@9",
+  "point", "sep_expr", "expression", 0
 };
 #endif
 
@@ -515,23 +516,23 @@ static const yytype_uint16 yytoknum[] =
 /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,    29,    30,    31,    31,    31,    32,    33,    33,    34,
-      34,    35,    35,    35,    35,    37,    36,    38,    36,    36,
-      36,    39,    39,    39,    41,    40,    42,    40,    40,    40,
-      44,    43,    46,    45,    47,    47,    49,    48,    50,    48,
-      48,    51,    52,    52,    53,    53,    53,    53,    53,    53,
-      53
+       0,    29,    30,    31,    31,    31,    33,    32,    34,    34,
+      35,    35,    36,    36,    36,    36,    38,    37,    39,    37,
+      37,    37,    40,    40,    40,    42,    41,    43,    41,    41,
+      41,    45,    44,    47,    46,    46,    48,    48,    50,    49,
+      51,    49,    49,    52,    53,    53,    54,    54,    54,    54,
+      54,    54,    54,    54
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     1,     4,     3,     0,     3,     2,     0,     1,
-       1,     1,     1,     1,     1,     0,     3,     0,     3,     1,
-       1,     2,     3,     0,     0,     3,     0,     3,     1,     1,
-       0,     5,     0,     5,     2,     0,     0,     6,     0,     3,
-       1,     3,     1,     1,     3,     2,     3,     3,     3,     3,
-       1
+       0,     2,     1,     4,     3,     0,     0,     4,     2,     0,
+       1,     1,     1,     1,     1,     1,     0,     3,     0,     3,
+       1,     2,     2,     3,     0,     0,     3,     0,     3,     1,
+       2,     0,     5,     0,     5,     2,     2,     0,     0,     6,
+       0,     3,     1,     3,     1,     1,     3,     2,     3,     3,
+       3,     3,     1,     1
 };
 
 /* YYDEFACT[STATE-NAME] -- Default reduction number in state STATE-NUM.
@@ -539,96 +540,103 @@ static const yytype_uint8 yyr2[] =
    means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       5,     0,    30,    15,    17,    20,     0,     2,     0,    19,
-      12,    14,    11,    13,     0,     0,     0,     0,     0,     1,
-       5,     5,     8,    23,     0,    16,    18,     4,     3,     0,
-       6,     0,    24,    26,    29,     0,    23,    28,    50,     0,
-       0,     0,     0,     7,    10,     9,    23,     0,     0,    31,
-      21,    45,     0,    32,    42,    43,     0,     0,     0,     0,
-       0,    22,    25,    27,    44,    35,    47,    48,    46,    49,
-      41,     0,    33,    38,     0,    40,    34,    35,     0,    39,
-       0,    36,    35,    37
+       5,     0,    31,    16,    18,     9,     0,     2,     0,    20,
+      13,    15,    12,    14,     0,     0,     0,     0,     0,     0,
+      21,     1,     5,     5,     6,    24,    37,     0,    17,    19,
+      52,     9,     0,     0,     8,    11,    10,     4,     3,     9,
+       0,    25,    27,     9,     0,    24,    29,     0,    35,    53,
+       0,     0,    47,     0,     0,     0,     0,     0,     7,    24,
+       0,     0,    30,    32,    22,    40,     0,    42,    36,    33,
+      44,    45,     0,    46,    49,    50,    48,    51,    23,    26,
+      28,    37,     0,    37,    43,    41,     0,    34,    38,    37,
+      39
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     6,     7,    14,    30,    43,    15,     8,    17,    18,
-      35,    36,    47,    48,     9,    16,    25,    65,    72,    76,
-      82,    77,    41,    60,    42
+      -1,     6,     7,    14,    39,    20,    34,    15,     8,    17,
+      18,    44,    45,    60,    61,     9,    16,    28,    83,    48,
+      68,    89,    81,    50,    72,    51
 };
 
 /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
    STATE-NUM.  */
-#define YYPACT_NINF -77
+#define YYPACT_NINF -50
 static const yytype_int8 yypact[] =
 {
-      33,    63,   -77,   -77,   -77,   -77,    13,   -77,    -2,   -77,
-     -77,   -77,   -77,   -77,    -1,    12,    16,    19,    19,   -77,
-      33,    33,    32,    36,    -7,   -77,   -77,   -77,   -77,    10,
-     -77,    63,   -77,   -77,   -77,    27,    36,   -77,   -77,    -7,
-      -7,    40,    46,   -77,   -77,    58,    36,    19,    19,   -77,
-     -77,    30,    38,   -77,   -77,   -77,    -7,    -7,    -7,    -7,
-      -7,   -77,   -77,   -77,   -77,    35,    30,   -77,    30,   -77,
-      58,    -6,   -77,   -77,    34,   -77,   -77,    35,    -7,   -77,
-      43,   -77,    35,   -77
+      39,    68,   -50,   -50,   -50,   -16,    12,   -50,    -2,   -50,
+     -50,   -50,   -50,   -50,     2,    14,    19,    -4,    -4,     1,
+     -50,   -50,    39,    39,   -50,    42,    27,     6,   -50,   -50,
+     -50,    63,     6,     6,   -50,   -50,    69,   -50,   -50,   -16,
+      68,   -50,   -50,   -16,    35,    42,   -50,    -9,   -50,   -50,
+      37,    51,    72,    43,     6,     6,     6,     6,   -50,    42,
+      -4,    -4,   -50,   -50,   -50,   -50,    46,   -50,   -50,   -50,
+     -50,   -50,     6,   -50,    72,   -50,    72,   -50,   -50,   -50,
+     -50,    27,     6,    27,    69,   -50,    38,   -50,   -50,    27,
+     -50
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -77,   -77,   -12,    41,   -77,   -77,   -77,    49,   -77,   -77,
-     -34,   -77,   -77,   -77,   -20,   -77,   -18,   -77,   -76,   -77,
-     -77,   -77,     1,   -77,   -25
+     -50,   -50,    33,    36,   -50,   -12,   -50,   -50,    58,   -50,
+     -50,   -42,   -50,   -50,   -50,   -20,   -50,   -17,   -50,   -49,
+     -50,   -50,   -50,     8,   -50,   -19
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
    positive, shift that token.  If negative, reduce the rule which
    number is the opposite.  If YYTABLE_NINF, syntax error.  */
-#define YYTABLE_NINF -1
-static const yytype_uint8 yytable[] =
+#define YYTABLE_NINF -54
+static const yytype_int8 yytable[] =
 {
-      26,    79,    50,    37,    45,    73,    83,    38,    27,    28,
-      74,    39,    61,    19,    51,    52,    37,     2,     3,     4,
-      40,    24,    20,    21,    38,     5,    37,    22,    39,    62,
-      63,    66,    67,    68,    69,    70,     1,    40,    23,    31,
-       2,     3,     4,     2,    32,    33,    24,    57,     5,    59,
-      49,    34,    29,    75,    56,    57,    58,    59,    54,    55,
-      71,    78,    56,    57,    58,    59,    64,    10,    53,    11,
-      12,    81,    46,    13,    56,    57,    58,    59,    44,    80
+      36,    29,    65,    64,    19,    46,    26,    66,     2,     3,
+       4,    26,    21,    52,    53,    30,    31,    78,    27,    32,
+      30,    49,    22,    27,    32,    46,    23,    58,    33,    24,
+      67,    62,    85,    33,    87,    74,    75,    76,    77,    46,
+      90,    25,     1,    79,    80,    40,     2,     3,     4,     2,
+      41,    42,    47,    84,     5,    37,    38,    43,    63,    54,
+      55,    56,    57,    70,    71,    69,    88,    54,    55,    56,
+      57,    73,    10,    82,    11,    12,    59,    35,    13,   -53,
+     -53,   -53,   -53,    19,     0,    54,    55,    56,    57,    55,
+      86,    57
 };
 
 #define yypact_value_is_default(yystate) \
-  ((yystate) == (-77))
+  ((yystate) == (-50))
 
 #define yytable_value_is_error(yytable_value) \
   YYID (0)
 
-static const yytype_uint8 yycheck[] =
+static const yytype_int8 yycheck[] =
 {
-      18,    77,    36,    23,    29,    11,    82,    14,    20,    21,
-      16,    18,    46,     0,    39,    40,    36,     7,     8,     9,
-      27,    27,    24,    24,    14,    15,    46,    15,    18,    47,
-      48,    56,    57,    58,    59,    60,     3,    27,    22,     3,
-       7,     8,     9,     7,     8,     9,    27,    17,    15,    19,
-      23,    15,    20,    71,    16,    17,    18,    19,    12,    13,
-      25,    27,    16,    17,    18,    19,    28,     4,    28,     6,
-       7,    28,    31,    10,    16,    17,    18,    19,    29,    78
+      19,    18,    11,    45,    20,    25,    15,    16,     7,     8,
+       9,    15,     0,    32,    33,    14,    15,    59,    27,    18,
+      14,    15,    24,    27,    18,    45,    24,    39,    27,    15,
+      47,    43,    81,    27,    83,    54,    55,    56,    57,    59,
+      89,    22,     3,    60,    61,     3,     7,     8,     9,     7,
+       8,     9,    25,    72,    15,    22,    23,    15,    23,    16,
+      17,    18,    19,    12,    13,    28,    28,    16,    17,    18,
+      19,    28,     4,    27,     6,     7,    40,    19,    10,    16,
+      17,    18,    19,    20,    -1,    16,    17,    18,    19,    17,
+      82,    19
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
    symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,     3,     7,     8,     9,    15,    30,    31,    36,    43,
-       4,     6,     7,    10,    32,    35,    44,    37,    38,     0,
-      24,    24,    15,    22,    27,    45,    45,    31,    31,    20,
-      33,     3,     8,     9,    15,    39,    40,    43,    14,    18,
-      27,    51,    53,    34,    36,    53,    32,    41,    42,    23,
-      39,    53,    53,    28,    12,    13,    16,    17,    18,    19,
-      52,    39,    45,    45,    28,    46,    53,    53,    53,    53,
-      53,    25,    47,    11,    16,    45,    48,    50,    27,    47,
-      51,    28,    49,    47
+       0,     3,     7,     8,     9,    15,    30,    31,    37,    44,
+       4,     6,     7,    10,    32,    36,    45,    38,    39,    20,
+      34,     0,    24,    24,    15,    22,    15,    27,    46,    46,
+      14,    15,    18,    27,    35,    37,    54,    31,    31,    33,
+       3,     8,     9,    15,    40,    41,    44,    25,    48,    15,
+      52,    54,    54,    54,    16,    17,    18,    19,    34,    32,
+      42,    43,    34,    23,    40,    11,    16,    46,    49,    28,
+      12,    13,    53,    28,    54,    54,    54,    54,    40,    46,
+      46,    51,    27,    47,    54,    48,    52,    48,    28,    50,
+      48
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1465,233 +1473,297 @@ yyreduce:
         case 5:
 
 /* Line 1806 of yacc.c  */
-#line 55 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 55 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {}
+    break;
+
+  case 6:
+
+/* Line 1806 of yacc.c  */
+#line 58 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {
+							(yyval.ptr) = creer_variable((yyvsp[(1) - (2)].string), (yyvsp[(2) - (2)].string), NULL);
+							ajouter_variable_liste(lv, (yyval.ptr));
+							detruire_variable((yyval.ptr));
+						}
+    break;
+
+  case 7:
+
+/* Line 1806 of yacc.c  */
+#line 63 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {									
+									set_value_variable(get_variable_queue(lv), (yyvsp[(4) - (4)].ptr));									
+								}
+    break;
+
+  case 8:
+
+/* Line 1806 of yacc.c  */
+#line 68 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {(yyval.ptr) = (yyvsp[(2) - (2)].ptr);}
+    break;
+
+  case 9:
+
+/* Line 1806 of yacc.c  */
+#line 69 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {(yyval.ptr) = "undefined";}
+    break;
+
+  case 10:
+
+/* Line 1806 of yacc.c  */
+#line 72 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {(yyval.ptr) = malloc(sizeof(char)*30); sprintf((yyval.ptr), "%f", (yyvsp[(1) - (1)].reel));}
     break;
 
   case 11:
 
 /* Line 1806 of yacc.c  */
-#line 69 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {(yyval.ptr) = "image";}
+#line 73 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {(yyval.ptr) = (yyvsp[(1) - (1)].ptr);}
     break;
 
   case 12:
 
 /* Line 1806 of yacc.c  */
-#line 70 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {(yyval.ptr) = "chemin";}
+#line 76 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {(yyval.string) = "image";}
     break;
 
   case 13:
 
 /* Line 1806 of yacc.c  */
-#line 71 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {(yyval.ptr) = "point";}
+#line 77 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {(yyval.string) = "chemin";}
     break;
 
   case 14:
 
 /* Line 1806 of yacc.c  */
-#line 72 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {(yyval.ptr) = "reel";}
+#line 78 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {(yyval.string) = "point";}
     break;
 
   case 15:
 
 /* Line 1806 of yacc.c  */
-#line 75 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {dub_creation_image(); 
-												(yyval.ptr) = dub_creation_chemin(false);
-										 	}
+#line 79 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {(yyval.string) = "reel";}
     break;
 
   case 16:
 
 /* Line 1806 of yacc.c  */
-#line 78 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {dub_ajout_chemin_image();
-												dub_ajout_image_surface();
-											}
+#line 82 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {dub_creation_image(); 
+												(yyval.ptr) = dub_creation_chemin(false);
+										 	}
     break;
 
   case 17:
 
 /* Line 1806 of yacc.c  */
-#line 82 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {dub_creation_image(); 
-												(yyval.ptr) = dub_creation_chemin(true);
+#line 85 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {dub_ajout_chemin_image();
+												dub_ajout_image_surface();
 											}
     break;
 
   case 18:
 
 /* Line 1806 of yacc.c  */
-#line 85 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {dub_ajout_chemin_image();
-												dub_ajout_image_surface();
+#line 89 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {dub_creation_image(); 
+												(yyval.ptr) = dub_creation_chemin(true);
 											}
     break;
 
   case 19:
 
 /* Line 1806 of yacc.c  */
-#line 89 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {(yyval.ptr) = (yyvsp[(1) - (1)].ptr); dub_ajout_image_surface();}
+#line 92 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {dub_ajout_chemin_image();
+												dub_ajout_image_surface();
+											}
     break;
 
-  case 23:
+  case 20:
 
 /* Line 1806 of yacc.c  */
-#line 95 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {}
+#line 96 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {(yyval.ptr) = (yyvsp[(1) - (1)].ptr); dub_ajout_image_surface();}
     break;
 
   case 24:
 
 /* Line 1806 of yacc.c  */
-#line 97 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {(yyval.ptr) = dub_creation_chemin(false);}
+#line 102 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {}
     break;
 
   case 25:
 
 /* Line 1806 of yacc.c  */
-#line 98 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {dub_ajout_image_surface();}
+#line 104 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {(yyval.ptr) = dub_creation_chemin(false);}
     break;
 
   case 26:
 
 /* Line 1806 of yacc.c  */
-#line 100 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {(yyval.ptr) = dub_creation_chemin(true);}
+#line 105 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {dub_ajout_image_surface();}
     break;
 
   case 27:
 
 /* Line 1806 of yacc.c  */
-#line 101 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {dub_ajout_image_surface();}
+#line 107 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {(yyval.ptr) = dub_creation_chemin(true);}
     break;
 
   case 28:
 
 /* Line 1806 of yacc.c  */
-#line 103 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 108 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {dub_ajout_image_surface();}
+    break;
+
+  case 29:
+
+/* Line 1806 of yacc.c  */
+#line 110 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.ptr) = (yyvsp[(1) - (1)].ptr); dub_ajout_image_surface();}
     break;
 
-  case 30:
+  case 31:
 
 /* Line 1806 of yacc.c  */
-#line 107 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 114 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.ptr) = dub_creation_image();}
     break;
 
-  case 32:
+  case 33:
 
 /* Line 1806 of yacc.c  */
-#line 110 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 117 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {dub_ajout_point_chemin((yyvsp[(2) - (3)].ptr));}
     break;
 
-  case 35:
+  case 37:
 
 /* Line 1806 of yacc.c  */
-#line 115 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 123 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {}
-    break;
-
-  case 36:
-
-/* Line 1806 of yacc.c  */
-#line 118 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {dub_ajout_point_chemin(somme_point((yyvsp[(3) - (4)].ptr), get_point_queue(get_liste_points_chemin(c))));}
     break;
 
   case 38:
 
 /* Line 1806 of yacc.c  */
-#line 119 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 126 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {dub_ajout_point_chemin(somme_point((yyvsp[(3) - (4)].ptr), get_point_queue(get_liste_points_chemin(c))));}
+    break;
+
+  case 40:
+
+/* Line 1806 of yacc.c  */
+#line 128 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {ajouter_point_chemin(c, get_point_indice_chemin(c, 0));}
-    break;
-
-  case 41:
-
-/* Line 1806 of yacc.c  */
-#line 123 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {(yyval.ptr) = dub_creation_point((yyvsp[(1) - (3)].reel), (yyvsp[(3) - (3)].reel), (yyvsp[(2) - (3)].booleen));
-												}
-    break;
-
-  case 42:
-
-/* Line 1806 of yacc.c  */
-#line 127 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {(yyval.booleen) = 1;}
     break;
 
   case 43:
 
 /* Line 1806 of yacc.c  */
-#line 128 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {(yyval.booleen) = 0;}
+#line 133 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {(yyval.ptr) = dub_creation_point((yyvsp[(1) - (3)].reel), (yyvsp[(3) - (3)].reel), (yyvsp[(2) - (3)].booleen));
+												}
     break;
 
   case 44:
 
 /* Line 1806 of yacc.c  */
-#line 131 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {(yyval.reel) = (yyvsp[(2) - (3)].reel);}
+#line 137 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {(yyval.booleen) = 1;}
     break;
 
   case 45:
 
 /* Line 1806 of yacc.c  */
-#line 132 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {(yyval.reel) = -(yyvsp[(2) - (2)].reel);}
+#line 138 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {(yyval.booleen) = 0;}
     break;
 
   case 46:
 
 /* Line 1806 of yacc.c  */
-#line 133 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {(yyval.reel) = (yyvsp[(1) - (3)].reel) - (yyvsp[(2) - (3)].reel);}
+#line 141 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {(yyval.reel) = (yyvsp[(2) - (3)].reel);}
     break;
 
   case 47:
 
 /* Line 1806 of yacc.c  */
-#line 134 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {(yyval.reel) = (yyvsp[(1) - (3)].reel) + (yyvsp[(2) - (3)].reel);}
+#line 142 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {(yyval.reel) = -(yyvsp[(2) - (2)].reel);}
     break;
 
   case 48:
 
 /* Line 1806 of yacc.c  */
-#line 135 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {(yyval.reel) = (yyvsp[(1) - (3)].reel) / (yyvsp[(2) - (3)].reel);}
+#line 143 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {(yyval.reel) = (yyvsp[(1) - (3)].reel) - (yyvsp[(2) - (3)].reel);}
     break;
 
   case 49:
 
 /* Line 1806 of yacc.c  */
-#line 136 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
-    {(yyval.reel) = (yyvsp[(1) - (3)].reel) * (yyvsp[(2) - (3)].reel);}
+#line 144 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {(yyval.reel) = (yyvsp[(1) - (3)].reel) + (yyvsp[(2) - (3)].reel);}
     break;
 
   case 50:
 
 /* Line 1806 of yacc.c  */
-#line 137 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 145 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {(yyval.reel) = (yyvsp[(1) - (3)].reel) / (yyvsp[(2) - (3)].reel);}
+    break;
+
+  case 51:
+
+/* Line 1806 of yacc.c  */
+#line 146 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {(yyval.reel) = (yyvsp[(1) - (3)].reel) * (yyvsp[(2) - (3)].reel);}
+    break;
+
+  case 52:
+
+/* Line 1806 of yacc.c  */
+#line 147 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.reel) = (yyvsp[(1) - (1)].reel);}
+    break;
+
+  case 53:
+
+/* Line 1806 of yacc.c  */
+#line 148 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+    {
+													if (est_variable_type(get_variable_par_nom(lv, (yyvsp[(1) - (1)].string)), "reel"))
+													{
+														(yyval.reel) = *((double*)get_value_variable(get_variable_par_nom(lv, (yyvsp[(1) - (1)].string))));
+													}
+													else{
+														printf("Erreur : La variable %s n'est pas un réél\n", (yyvsp[(1) - (1)].string));
+														error();
+													}
+												}
     break;
 
 
 
 /* Line 1806 of yacc.c  */
-#line 1695 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/y.tab.c"
+#line 1767 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/y.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1922,6 +1994,6 @@ yyreturn:
 
 
 /* Line 2067 of yacc.c  */
-#line 141 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 161 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
 
 

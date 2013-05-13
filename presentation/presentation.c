@@ -1,0 +1,73 @@
+#include <sys/io.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void usage(){
+	printf("Usage: ./presentation [fonctionnalité à tester] (paramètre suivants optionnels) [longueur] [largeur] [extension]\n");
+	exit(EXIT_FAILURE);
+}
+
+int main(int argc, char const *argv[])
+{
+	if (argc < 2 || argc > 5)
+	{
+		usage();
+	}
+	else 
+	{
+		char* file_source;
+		char* file_dest;
+		char* longueur = malloc(sizeof(char)*10);
+		char* largeur = malloc(sizeof(char)*10);
+		char* extension = malloc(sizeof(char)*10);
+		file_source = (char*) malloc(sizeof(char)*100);
+		file_dest = (char*) malloc(sizeof(char)*100);
+		char racine[] = "./ressources/presentation_";
+		char commande[200];
+
+		strcpy(file_source, racine);	
+		strcpy(file_dest, "./ressources/sortie_");
+		strcat(file_source, argv[1]);
+		strcat(file_dest, argv[1]);
+		strcat(file_source, ".dubc");		
+		strcpy(commande, "../bin/dessine_moi_un_bison ");
+		if (access(file_source, 0) == 0)
+		{
+			if (argc == 2)
+			{
+				longueur = "100";
+				largeur = longueur;
+				extension = "pdf";
+			}
+			else if (argc = 5)
+			{
+				strcpy(longueur,argv[2]);
+				strcpy(largeur,argv[3]);
+				strcpy(extension,argv[4]);
+			}
+
+
+			strcat(file_dest, ".");
+			strcat(file_dest, extension);
+			
+			// Commande à lancer : ../bin/dessine_moi_un_bison [source] [dest] [extension] [longueur] [largeur]
+			strcat(commande, file_source);
+			strcat(file_source, " ");
+			strcat(commande, file_dest);
+			strcat(file_source, " ");
+			strcat(commande, extension);
+			strcat(file_source, " ");
+			strcat(commande, longueur);
+			strcat(file_source, " ");
+			strcat(commande, largeur);
+			//system(commande);
+		}
+		else
+		{
+			printf("Erreur le fichier %s n'est pas accessible en lecture\n", file_source);
+			return EXIT_FAILURE;
+		}
+	}
+	return EXIT_SUCCESS;
+}

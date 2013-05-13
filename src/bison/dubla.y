@@ -40,7 +40,7 @@ extern int yylex();
 
 %left EQUAL EGAL
 
-%type <ptr> point
+%type <ptr> point instruction affect value
 %type <booleen> sep_expr
 %type <reel> expression DIGIT
 
@@ -50,26 +50,33 @@ extern int yylex();
 fichier : 		instructions
 				;
 
-instructions :	VAR variable TERM instructions
+instructions :	VAR variable TERM instructions	
 				| instruction TERM instructions
 				| {}
 				;
 
-variable :		type ID affect
+variable :		type ID {
+							$<ptr>$ = creer_variable($<string>1, $<string>2, NULL);
+							ajouter_variable_liste(lv, $<ptr>$);
+							detruire_variable($<ptr>$);
+						}
+						affect {									
+									set_value_variable(get_variable_queue(lv), $<ptr>4);									
+								}
 				;
 
-affect :		EGAL value		
-				| 				
+affect :		EGAL value				{$<ptr>$ = $<ptr>2;}
+				| 						{$$ = "undefined";}
 				;
 
-value :			expression		
-				| instruction
+value :			expression				{$$ = malloc(sizeof(char)*30); sprintf($$, "%f", $1);};
+				| instruction 			{$$ = $1;}
 				;
 
-type :			IMG 		{$<ptr>$ = "image";}
-				| CHEMIN 	{$<ptr>$ = "chemin";}
-				| POINT 	{$<ptr>$ = "point";}
-				| REEL 		{$<ptr>$ = "reel";}
+type :			IMG 		{$<string>$ = "image";}
+				| CHEMIN 	{$<string>$ = "chemin";}
+				| POINT 	{$<string>$ = "point";}
+				| REEL 		{$<string>$ = "reel";}
 				;
 
 instruction :	DRAW 						{dub_creation_image(); 
@@ -87,7 +94,7 @@ instruction :	DRAW 						{dub_creation_image();
 											}
 							
 				| image 					{$<ptr>$ = $<ptr>1; dub_ajout_image_surface();}
-				| ID 				
+				| ID affect				
 				;
 
 img-instrs :	img-instr img-instrs
@@ -101,7 +108,7 @@ img-instr :		DRAW 						{$<ptr>$ = dub_creation_chemin(false);}
 					arguments				{dub_ajout_image_surface();}
 							
 				| image 					{$<ptr>$ = $<ptr>1; dub_ajout_image_surface();}
-				| ID 				
+				| ID affect				
 				;
 
 image :			IMG {$<ptr>$ = dub_creation_image();} OPEN img-instrs CLOSE
@@ -109,14 +116,17 @@ image :			IMG {$<ptr>$ = dub_creation_image();} OPEN img-instrs CLOSE
 
 arguments:		PAR_OP point PAR_CLO 				{dub_ajout_point_chemin($2);}
 									suivant
+				| ID suivant
 				;
 
 suivant :		SEP_P boucle
 				| {}
 				;
 
-boucle :		PLUS PAR_OP point PAR_CLO {dub_ajout_point_chemin(somme_point($3, get_point_queue(get_liste_points_chemin(c))));} suivant
-				| CYCLE 							{ajouter_point_chemin(c, get_point_indice_chemin(c, 0));} suivant
+boucle :		PLUS PAR_OP point PAR_CLO {dub_ajout_point_chemin(somme_point($3, get_point_queue(get_liste_points_chemin(c))));}
+										suivant
+				| CYCLE 							{ajouter_point_chemin(c, get_point_indice_chemin(c, 0));}
+						suivant
 				| arguments
 				;
 
@@ -135,6 +145,16 @@ expression :	PAR_OP expression PAR_CLO		{$$ = $<reel>2;}
 				| expression DIV expression		{$$ = $<reel>1 / $<reel>2;}
 				| expression PROD expression	{$$ = $<reel>1 * $<reel>2;}
 				| DIGIT 						{$$ = $<reel>1;}
+				| ID 							{
+													if (est_variable_type(get_variable_par_nom(lv, $<string>1), "reel"))
+													{
+														$$ = *((double*)get_value_variable(get_variable_par_nom(lv, $<string>1)));
+													}
+													else{
+														printf("Erreur : La variable %s n'est pas un réél\n", $<string>1);
+														error();
+													}
+												}
 				;
 
 

@@ -18,6 +18,10 @@ void set_type_variable(Variable v, char* value);
 void set_nom_variable(Variable v, char* value);
 void set_value_variable(Variable v, void* value);
 
+bool est_variable_type(Variable v, char* type);
+
+char* creer_char(char* type);
+void* creer_value(void* value, char* type);
 char* toStringVariable(Variable v);
 
 #endif

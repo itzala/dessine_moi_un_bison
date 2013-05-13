@@ -45,6 +45,13 @@ Variable get_variable_tete(ListeVariables l){
 	return NULL;
 }
 
+Variable get_variable_queue(ListeVariables l){
+	if(! est_vide_liste_variables(l)){
+		return l->tab[l->nb-1];
+	}
+	return NULL;
+}
+
 Variable get_variable_indice(ListeVariables l, int indice){
 	if(!est_vide_liste_variables(l)){
 		if (!(indice < 0 || indice >= l->nb)){
@@ -84,7 +91,6 @@ ListeVariables ajouter_variable_liste(ListeVariables l, Variable p){
 		rallonger_liste_variables(l);
 	}
 	l->tab[l->nb] = clone_variable(p);
-	printf("%s ajoutée\n", get_nom_variable(l->tab[l->nb]));
 	l->nb++;
 	return l;
 }

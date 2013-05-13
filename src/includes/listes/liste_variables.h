@@ -10,6 +10,7 @@ void detruire_liste_variables(ListeVariables l);
 ListeVariables clone_liste_variables(ListeVariables l);
 
 Variable get_variable_tete(ListeVariables l);
+Variable get_variable_queue(ListeVariables l);
 Variable get_variable_indice(ListeVariables l, int indice);
 Variable get_variable_par_nom(ListeVariables l, char* nom);
 int get_nb_variables(ListeVariables l);

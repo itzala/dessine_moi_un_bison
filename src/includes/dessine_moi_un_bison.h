@@ -21,6 +21,7 @@ ListeImages li;
 ListeVariables lv;
 Surface s;
 void* value;
+char* valeur;
 
 Point dub_creation_point(double x, double y, int sep);
 Chemin dub_creation_chemin(bool fill);

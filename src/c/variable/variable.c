@@ -7,10 +7,8 @@ struct variable
 	void* value;
 };
 
-char* creer_char(char* type);
-void* creer_value(void* value);
 void detruire_value(void* value, char* type);
-int est_reconnu_type(char* type);
+bool est_reconnu_type(char* type);
 
 Variable creer_variable(char* type, char* nom, void* value){
 	if (est_reconnu_type(type))
@@ -18,7 +16,13 @@ Variable creer_variable(char* type, char* nom, void* value){
 		Variable v = malloc(sizeof(struct variable));
 		v->type = creer_char(type);
 		v->nom = creer_char(nom);
-		v->value = creer_value(value);
+		if (value != NULL)
+		{
+			v->value = creer_value(value, type);
+		}
+		else{
+			v->value = NULL;
+		}		
 		return v;
 	}
 	else{
@@ -69,11 +73,16 @@ void set_nom_variable(Variable v, char* value){
 
 void set_value_variable(Variable v, void* value){
 	detruire_value(v->value, v->type);	
-	v->value = value;
+	v->value = creer_value(value, v->type);
 }
 
 
-int est_reconnu_type(char* type){
+bool est_variable_type(Variable v, char* type){
+	return est_reconnu_type(type) && !strcmp(v->type, type);
+}
+
+
+bool est_reconnu_type(char* type){
 	return !strcmp(type, "point") || !strcmp(type, "chemin") || !strcmp(type, "image")||!strcmp(type, "reel");
 }
 
@@ -90,10 +99,24 @@ char* creer_char(char* type){
 	return c;
 }
 
-void* creer_value(void* value){
-	void* v = malloc(sizeof(value));
-	memcpy(v, value, sizeof(value));
-	return v;
+void* creer_value(void* value, char* type){
+	if (!strcmp(type, "reel"))
+	{
+		void* v = malloc(sizeof(double));
+		double tmp;
+		if (value == NULL)
+		{
+			tmp = 0;
+		}
+		else{
+			tmp = atof(value);
+		}
+		v = memcpy(v, &tmp, sizeof(double));
+		return v;
+	}
+	else{
+		return value;
+	}
 }
 
 
