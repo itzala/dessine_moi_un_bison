@@ -38,7 +38,11 @@ int main(int argc, char const *argv[])
 			{
 				strcpy(longueur,argv[2]);
 				strcpy(largeur,argv[3]);
-				strcpy(extension,argv[4]);
+
+				if (strcmp(argv[4], "pdf"))
+					printf("Seuls les pdf sont gérés\n");
+				extension = "pdf";
+				
 			}
 			else if (argc == 2)
 			{

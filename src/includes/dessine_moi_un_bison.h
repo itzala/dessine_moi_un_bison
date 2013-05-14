@@ -15,7 +15,6 @@ extern int yyparse();
 
 double epaisseur;
 int couleur;
-int est_premier_point_chemin;
 bool est_dans_image;
 Chemin c;
 ListeImages li;
