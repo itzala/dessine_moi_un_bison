@@ -1,3 +1,4 @@
-#import presentation_draw.dubc
-#import presentation_fill.dubc
-#import presentation_expression.dubc
+var reel dix = 10;
+var reel trente = 3*dix;
+draw(dix,10)--+(0,80)--+(80,0)--+(0,-80)--+(-80,0);
+fill(30,30)--+(trente+10,40)--+(0,-40)--+(-40,40)--cycle;

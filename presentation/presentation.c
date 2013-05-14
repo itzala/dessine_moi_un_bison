@@ -34,18 +34,21 @@ int main(int argc, char const *argv[])
 		strcpy(commande, "../bin/dessine_moi_un_bison ");
 		if (access(file_source, 0) == 0)
 		{
-			if (argc <= 5)
+			if (argc == 5)
+			{
+				strcpy(longueur,argv[2]);
+				strcpy(largeur,argv[3]);
+				strcpy(extension,argv[4]);
+			}
+			else if (argc == 2)
 			{
 				longueur = "100";
 				largeur = longueur;
 				extension = "pdf";
 				printf("%s %s %s\n", commande, file_source, file_dest);
 			}
-			else if (argc == 5)
-			{
-				strcpy(longueur,argv[2]);
-				strcpy(largeur,argv[3]);
-				strcpy(extension,argv[4]);
+			else{
+				usage();
 			}
 
 
