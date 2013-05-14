@@ -73,7 +73,14 @@ void set_nom_variable(Variable v, char* value){
 
 void set_value_variable(Variable v, void* value){
 	detruire_value(v->value, v->type);	
-	v->value = creer_value(value, v->type);
+	void* tmp = creer_value(value, v->type);
+	if (tmp == NULL)
+	{
+		v->value = NULL;
+	}
+	else{
+		v->value = tmp;
+	}
 }
 
 
@@ -87,7 +94,35 @@ bool est_reconnu_type(char* type){
 }
 
 char* toStringVariable(Variable v){
-	return "Variable";
+	if (v != NULL)
+	{
+		printf("Affichage variable %s (%s)\n", v->nom, v->type);
+		if (v->value == NULL)
+		{
+			return "Variable vide\n";
+		}
+		if (!strcmp(v->type, "point"))
+		{
+			printf("point\n");
+			return toStringPoint(v->value);
+		}
+		else if (!strcmp(v->type, "chemin"))
+		{
+			printf("chemin\n");
+			return toStringChemin(v->value);
+		}
+		else if (!strcmp(v->type, "image"))
+		{
+			printf("image\n");
+			imageToString(v->value);
+		}
+		else{
+			char buffer[30];
+			sprintf(buffer, "%f", *((double*)v->value));
+			return buffer;
+		}
+	}
+	return NULL;
 }
 
 

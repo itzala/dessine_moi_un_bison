@@ -34,13 +34,14 @@ int main(int argc, char const *argv[])
 		strcpy(commande, "../bin/dessine_moi_un_bison ");
 		if (access(file_source, 0) == 0)
 		{
-			if (argc == 2)
+			if (argc <= 5)
 			{
 				longueur = "100";
 				largeur = longueur;
 				extension = "pdf";
+				printf("%s %s %s\n", commande, file_source, file_dest);
 			}
-			else if (argc = 5)
+			else if (argc == 5)
 			{
 				strcpy(longueur,argv[2]);
 				strcpy(largeur,argv[3]);
@@ -53,15 +54,16 @@ int main(int argc, char const *argv[])
 			
 			// Commande à lancer : ../bin/dessine_moi_un_bison [source] [dest] [extension] [longueur] [largeur]
 			strcat(commande, file_source);
-			strcat(file_source, " ");
+			strcat(commande, " ");
 			strcat(commande, file_dest);
-			strcat(file_source, " ");
+			strcat(commande, " ");
 			strcat(commande, extension);
-			strcat(file_source, " ");
+			strcat(commande, " ");
 			strcat(commande, longueur);
-			strcat(file_source, " ");
+			strcat(commande, " ");
 			strcat(commande, largeur);
-			//system(commande);
+			printf("On exécute la commande :\t%s\n", commande);
+			system(commande);
 		}
 		else
 		{

@@ -2,20 +2,14 @@
 
 Point dub_creation_point(double x, double y, int sep){
 	Point p;
-	if(x < 0 || y < 0){
-		error();
-		p = NULL;
+	if (sep){
+		p = creer_point_polaire(x, y);
 	}
-	else{ 
-		if (sep){
-			p = creer_point_polaire(x, y);
-		}
-		else {
-			p = creer_point(x, y);
-		}
-		if (est_premier_point_chemin){
-			est_premier_point_chemin = 0;
-		}
+	else {
+		p = creer_point(x, y);
+	}
+	if (est_premier_point_chemin){
+		est_premier_point_chemin = 0;
 	}
 	return p;
 }
@@ -33,15 +27,17 @@ Image dub_creation_image(){
 	return get_image_queue(li);
 }
 
-void dub_ajout_point_chemin(Point p){
+Chemin dub_ajout_point_chemin(Point p){
 	ajouter_point_chemin(c, p);
 	// detruire_point(p);
+	return c;
 }
 
-void dub_ajout_chemin_image(){
+Image dub_ajout_chemin_image(){
 	ajouter_chemin_image(get_image_queue(li), c);
 	detruire_chemin(c);
 	c=NULL;
+	return get_image_queue(li);
 }
 
 void dub_ajout_image_surface(){

@@ -110,28 +110,31 @@ char* toStringChemin(Chemin c){
 
 void dessiner_chemin(Chemin c, cairo_t * contexte)
 {
-	int x, y;
-	Point p = get_point_tete(c->tab); 
-	x = get_abscisse(p);
-	y = get_ordonnee(p);
-	
-	cairo_move_to(contexte, x, y);
-
-	int nb_points = get_nb_points(c->tab);
-	for (int i = 1; i < nb_points; i++)
+	if (! est_vide_liste_points(c->tab))
 	{
-		p = get_point_indice(c->tab, i); 
+		int x, y;
+		Point p = get_point_tete(c->tab); 
 		x = get_abscisse(p);
 		y = get_ordonnee(p);
-		cairo_line_to(contexte, x, y);
-	}
-	cairo_set_line_width(contexte, c->epaisseur);
-	if (c->fill)
-	{
-		cairo_fill(contexte);
-	}
-	else
-	{
-		cairo_stroke(contexte);
+		
+		cairo_move_to(contexte, x, y);
+
+		int nb_points = get_nb_points(c->tab);
+		for (int i = 1; i < nb_points; i++)
+		{
+			p = get_point_indice(c->tab, i); 
+			x = get_abscisse(p);
+			y = get_ordonnee(p);
+			cairo_line_to(contexte, x, y);
+		}
+		cairo_set_line_width(contexte, c->epaisseur);
+		if (c->fill)
+		{
+			cairo_fill(contexte);
+		}
+		else
+		{
+			cairo_stroke(contexte);
+		}
 	}
 }

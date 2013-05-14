@@ -95,6 +95,10 @@ ListeVariables ajouter_variable_liste(ListeVariables l, Variable p){
 	return l;
 }
 
+bool est_dans_liste(ListeVariables l, char* nom){
+	return get_variable_par_nom(l, nom) != NULL;
+}
+
 bool est_vide_liste_variables(ListeVariables l){
 	return l->nb < 1;
 }

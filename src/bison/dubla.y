@@ -29,9 +29,10 @@ extern int yylex();
 %token POINT CYCLE
 %token DOUBLE COMMA
 
-%token DIGIT ID
+%token ID
+%token DIGIT 
 
-%token PLUS DIV MINUS PROD
+%token PLUS DIV MINUS PROD NEG
 %token EGAL EQUAL
 %token OPEN CLOSE TERM SEP_P END_FILE PAR_OP PAR_CLO
 
@@ -40,9 +41,10 @@ extern int yylex();
 
 %left EQUAL EGAL
 
-%type <ptr> point instruction affect value
-%type <booleen> sep_expr
 %type <reel> expression DIGIT
+%type <string> ID
+%type <ptr> point instruction affect value img-instr
+%type <booleen> sep_expr
 
 %start fichier
 %%
@@ -51,7 +53,7 @@ fichier : 		instructions
 				;
 
 instructions :	VAR variable TERM instructions	
-				| instruction TERM instructions
+				| instruction {dub_ajout_image_surface();} TERM instructions
 				| {}
 				;
 
@@ -62,15 +64,18 @@ variable :		type ID {
 						}
 						affect {									
 									set_value_variable(get_variable_queue(lv), $<ptr>4);									
+									// printf("%s\n", toStringVariable($<ptr>$));
 								}
 				;
 
-affect :		EGAL value				{$<ptr>$ = $<ptr>2;}
-				| 						{$$ = "undefined";}
+affect :		EGAL value				{$<ptr>$ = $<ptr>2; 
+											imageToString($<ptr>2);
+										}
+				| 						{$$ = NULL;}
 				;
 
 value :			expression				{$$ = malloc(sizeof(char)*30); sprintf($$, "%f", $1);};
-				| instruction 			{$$ = $1;}
+				| instruction 			{$$ = NULL;}
 				;
 
 type :			IMG 		{$<string>$ = "image";}
@@ -79,42 +84,64 @@ type :			IMG 		{$<string>$ = "image";}
 				| REEL 		{$<string>$ = "reel";}
 				;
 
-instruction :	DRAW 						{dub_creation_image(); 
-												$<ptr>$ = dub_creation_chemin(false);
+instruction :	DRAW 						{
+												dub_creation_image(); 
+												dub_creation_chemin(false);
 										 	} 
-					arguments 				{dub_ajout_chemin_image();
-												dub_ajout_image_surface();
+					arguments 				{
+												$<ptr>$ = dub_ajout_chemin_image();
 											} 
 							
-				| FILL 						{dub_creation_image(); 
-												$<ptr>$ = dub_creation_chemin(true);
+				| FILL 						{
+												dub_creation_image(); 
+												dub_creation_chemin(true);
 											}
-					arguments 				{dub_ajout_chemin_image();
-												dub_ajout_image_surface();
+					arguments 				{
+												$<ptr>$ = dub_ajout_chemin_image();
 											}
 							
-				| image 					{$<ptr>$ = $<ptr>1; dub_ajout_image_surface();}
-				| ID affect				
+				| image 					{$<ptr>$ = $<ptr>1;}
+				| ID affect					{$<ptr>$ = $<ptr>1;}
 				;
 
-img-instrs :	img-instr img-instrs
+img-instrs :	img-instr TERM {dub_ajout_image_surface();} img-instrs
 				| VAR variable img-instrs
 				| {}
 
-img-instr :		DRAW 						{$<ptr>$ = dub_creation_chemin(false);}
-					arguments 				{dub_ajout_image_surface();}
+img-instr :		DRAW 						{dub_creation_chemin(false);}
+					arguments				{$<ptr>$ = NULL;}
 							
 				| FILL 						{$<ptr>$ = dub_creation_chemin(true);}
-					arguments				{dub_ajout_image_surface();}
+					arguments				{$<ptr>$ = NULL;}
 							
-				| image 					{$<ptr>$ = $<ptr>1; dub_ajout_image_surface();}
-				| ID affect				
+				| image 					{$<ptr>$ = $<ptr>1;}
+				| ID affect					{
+												// if (est_dans_liste(lv, $<string>1))
+												// {
+												// 	if ($<ptr1>2 != NULL)
+												// 	{
+												// 		set_value_variable(get_variable_par_nom(lv, $<string>1), $<ptr>1);
+												// 		if (est_variable_type(get_variable_par_nom(lv, $<string>1), "reel"))
+												// 		{
+												// 			$<ptr>$ = NULL;
+												// 		}
+												// 		else{
+												// 			$<ptr>$ = get_value_variable(get_variable_par_nom(lv, $<string>1));
+												// 		}
+												// 	}
+												// 	else{
+												// 			printf("Erreur : La variable %s n'existe pas\n", $<string>1);
+												// 			error();
+												// 		}
+
+												// }
+											}
 				;
 
 image :			IMG {$<ptr>$ = dub_creation_image();} OPEN img-instrs CLOSE
 				;
 
-arguments:		PAR_OP point PAR_CLO 				{dub_ajout_point_chemin($2);}
+arguments:		PAR_OP point PAR_CLO 				{$<ptr>$ = 	dub_ajout_point_chemin($2);}
 									suivant
 				| ID suivant
 				;
@@ -139,21 +166,29 @@ sep_expr :		DOUBLE 							{$$ = 1;}
 				;
 
 expression :	PAR_OP expression PAR_CLO		{$$ = $<reel>2;}
-				| MINUS expression				{$$ = -$<reel>2;}
-				| expression MINUS expression 	{$$ = $<reel>1 - $<reel>2;}
-				| expression PLUS expression	{$$ = $<reel>1 + $<reel>2;}
-				| expression DIV expression		{$$ = $<reel>1 / $<reel>2;}
-				| expression PROD expression	{$$ = $<reel>1 * $<reel>2;}
+				| MINUS expression %prec NEG	{$$ = -$<reel>2;}
+				| expression MINUS expression 	{$$ = $<reel>1 - $<reel>3;}
+				| expression PLUS expression	{$$ = $<reel>1 + $<reel>3;}
+				| expression DIV expression		{$$ = $<reel>1 / $<reel>3;}
+				| expression PROD expression	{$$ = $<reel>1 * $<reel>3;}
 				| DIGIT 						{$$ = $<reel>1;}
 				| ID 							{
-													if (est_variable_type(get_variable_par_nom(lv, $<string>1), "reel"))
+													if (est_dans_liste(lv, $<string>1))
 													{
-														$$ = *((double*)get_value_variable(get_variable_par_nom(lv, $<string>1)));
+														if (est_variable_type(get_variable_par_nom(lv, $<string>1), "reel"))
+														{
+															$$ = *((double*)get_value_variable(get_variable_par_nom(lv, $<string>1)));
+														}
+														else{
+															printf("Erreur : La variable %s n'est pas un réél\n", $<string>1);
+															error();
+														}
 													}
 													else{
-														printf("Erreur : La variable %s n'est pas un réél\n", $<string>1);
-														error();
-													}
+															printf("Erreur : La variable %s n'existe pas\n", $<string>1);
+															error();
+														}
+
 												}
 				;
 

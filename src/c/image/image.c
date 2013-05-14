@@ -53,6 +53,7 @@ Image ajouter_chemin_image(Image img, Chemin c)
 
 void imageToString(Image img)
 {
+	printf("\nImage\n");
 	listeCheminsToString(img->tab);
 }
 

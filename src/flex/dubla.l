@@ -6,16 +6,31 @@ int fileno();
 %}
 %option nounput
 
-blanks	[ \t\n]+
+blanks			[ \t\n]+
 
-entier	[[:digit:]]+
+entier			[[:digit:]]+
 
-reel	{entier}("."{entier})?
+reel			{entier}("."{entier})?
 
-identifiant [[:alpha:]_][[:alnum:]_]*
+identifiant 	[[:alpha:]_]+
 
 %%
-{blanks}	{}
+{blanks}		{}
+
+{reel}			{yylval.reel = atof(yytext);
+				return DIGIT;}
+
+"var"			{return VAR;}
+"chemin"		{return CHEMIN;}
+"point"			{return POINT_C;}
+"reel"			{return REEL;}
+"cycle"			{return CYCLE;}
+"draw"			{return DRAW;}
+"fill"			{return FILL;}
+"image" 		{return IMG;}
+
+{identifiant}	{yylval.string = yytext;
+				return ID;}
 
 "{"				{return OPEN;}
 "}"				{return CLOSE;}
@@ -37,22 +52,9 @@ identifiant [[:alpha:]_][[:alnum:]_]*
 "--"			{return SEP_P;}
 
 "."				{return POINT;}
-{reel}			{yylval.reel = atof(yytext);
-				return DIGIT;}
-
-"var"			{return VAR;}
-"chemin"		{return CHEMIN;}
-"point"			{return POINT_C;}
-"reel"			{return REEL;}
-"cycle"			{return CYCLE;}
-"draw"			{return DRAW;}
-"fill"			{return FILL;}
-"image" 		{return IMG;}
-
-{identifiant}	{yylval.string = yytext;
-				return ID;}
 
 \"				{}
 \'				{}
 
 %%
+

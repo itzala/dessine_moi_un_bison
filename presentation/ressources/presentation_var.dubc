@@ -1,0 +1,3 @@
+var chemin fill_perso = fill(30,30)--(70,70)--(70,30)--(30,70)--(30,30);
+var chemin draw_perso = draw(10,10)--(10,90)--(90,90)--(90,10)--(10,10);
+fill_perso;

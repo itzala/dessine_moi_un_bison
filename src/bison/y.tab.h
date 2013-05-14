@@ -48,21 +48,22 @@
      CYCLE = 266,
      DOUBLE = 267,
      COMMA = 268,
-     DIGIT = 269,
-     ID = 270,
+     ID = 269,
+     DIGIT = 270,
      PLUS = 271,
      DIV = 272,
      MINUS = 273,
      PROD = 274,
-     EGAL = 275,
-     EQUAL = 276,
-     OPEN = 277,
-     CLOSE = 278,
-     TERM = 279,
-     SEP_P = 280,
-     END_FILE = 281,
-     PAR_OP = 282,
-     PAR_CLO = 283
+     NEG = 275,
+     EGAL = 276,
+     EQUAL = 277,
+     OPEN = 278,
+     CLOSE = 279,
+     TERM = 280,
+     SEP_P = 281,
+     END_FILE = 282,
+     PAR_OP = 283,
+     PAR_CLO = 284
    };
 #endif
 
@@ -73,7 +74,7 @@ typedef union YYSTYPE
 {
 
 /* Line 2068 of yacc.c  */
-#line 18 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
+#line 18 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
 
 	void* ptr;
 	double reel;
@@ -83,7 +84,7 @@ typedef union YYSTYPE
 
 
 /* Line 2068 of yacc.c  */
-#line 87 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/y.tab.h"
+#line 88 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/y.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

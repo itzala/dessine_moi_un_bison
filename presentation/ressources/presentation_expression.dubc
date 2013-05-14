@@ -1,0 +1,7 @@
+var reel taille = 100;
+var reel dix = 10;
+var reel trente = 3*dix;
+
+
+draw(dix,dix+dix-dix)--(10*dix/dix,taille-10)--(100-taille/10,taille-10)--(90,-dix+dix+dix)--(10,10);
+fill(trente,trente)--(taille-trente,taille-30)--(taille-trente,taille-70)--(dix+dix+dix,70)--(dix*2+dix,dix+dix*2);
