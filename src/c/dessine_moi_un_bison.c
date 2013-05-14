@@ -8,15 +8,11 @@ Point dub_creation_point(double x, double y, int sep){
 	else {
 		p = creer_point(x, y);
 	}
-	if (est_premier_point_chemin){
-		est_premier_point_chemin = 0;
-	}
 	return p;
 }
 
 Chemin dub_creation_chemin(bool fill){
 	c = creer_chemin_vide(epaisseur, couleur, fill); 
-	est_premier_point_chemin=1;
 	return c;
 }
 
@@ -102,8 +98,7 @@ int main(int argc, char const *argv[])
 	cairo_t *cr = creer_cairo_contexte(surface, NULL);
 
 	epaisseur = 1.0;
-	couleur = 1;
-	est_premier_point_chemin = 1;
+	couleur = 1;	
 	c = NULL;
 	li = creer_liste_images();
 	lv = creer_liste_variables();
