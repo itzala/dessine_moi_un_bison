@@ -110,7 +110,7 @@ char* toStringChemin(Chemin c){
 
 void dessiner_chemin(Chemin c, cairo_t * contexte)
 {
-	if (! est_vide_liste_points(c->tab))
+	if (! (est_vide_liste_points(c->tab) || get_nb_points_chemin(c) == 1))
 	{
 		int x, y;
 		Point p = get_point_tete(c->tab); 

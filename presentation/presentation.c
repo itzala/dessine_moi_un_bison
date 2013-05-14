@@ -24,7 +24,7 @@ int main(int argc, char const *argv[])
 		file_source = (char*) malloc(sizeof(char)*100);
 		file_dest = (char*) malloc(sizeof(char)*100);
 		char racine[] = "./ressources/presentation_";
-		char commande[200];
+		char* commande = malloc(sizeof(char)*200);
 
 		strcpy(file_source, racine);	
 		strcpy(file_dest, "./ressources/sortie_");
@@ -67,10 +67,16 @@ int main(int argc, char const *argv[])
 			strcat(commande, largeur);
 			printf("On exécute la commande :\t%s\n", commande);
 			system(commande);
+			free(commande);
+			commande = malloc(sizeof(char)*200);
+			strcpy(commande, "evince ");
+			strcat(commande, file_dest);
+			system(commande);
 		}
 		else
 		{
 			printf("Erreur le fichier %s n'est pas accessible en lecture\n", file_source);
+			
 			return EXIT_FAILURE;
 		}
 	}

@@ -32,12 +32,14 @@ extern int yylex();
 %token ID
 %token DIGIT 
 
-%token PLUS DIV MINUS PROD NEG
+%token PLUS DIV MINUS PROD 
+%token NEG
 %token EGAL EQUAL
 %token OPEN CLOSE TERM SEP_P END_FILE PAR_OP PAR_CLO
 
 %left PLUS MINUS
 %left PROD DIV
+%left NEG
 
 %left EQUAL EGAL
 
@@ -69,7 +71,7 @@ variable :		type ID {
 				;
 
 affect :		EGAL value				{$<ptr>$ = $<ptr>2; 
-											imageToString($<ptr>2);
+											// imageToString($<ptr>2);
 										}
 				| 						{$$ = NULL;}
 				;

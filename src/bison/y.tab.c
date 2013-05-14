@@ -66,7 +66,7 @@
 /* Copy the first part of user declarations.  */
 
 /* Line 268 of yacc.c  */
-#line 1 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 1 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -85,7 +85,7 @@ extern int yylex();
 
 
 /* Line 268 of yacc.c  */
-#line 89 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/y.tab.c"
+#line 89 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/y.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -149,7 +149,7 @@ typedef union YYSTYPE
 {
 
 /* Line 293 of yacc.c  */
-#line 18 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 18 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
 
 	void* ptr;
 	double reel;
@@ -159,7 +159,7 @@ typedef union YYSTYPE
 
 
 /* Line 293 of yacc.c  */
-#line 163 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/y.tab.c"
+#line 163 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/y.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -171,7 +171,7 @@ typedef union YYSTYPE
 
 
 /* Line 343 of yacc.c  */
-#line 175 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/y.tab.c"
+#line 175 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/y.tab.c"
 
 #ifdef short
 # undef short
@@ -479,12 +479,12 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    52,    52,    55,    56,    56,    57,    60,    60,    71,
-      74,    77,    78,    81,    82,    83,    84,    87,    87,    95,
-      95,   103,   104,   107,   107,   108,   109,   111,   111,   114,
-     114,   117,   118,   141,   141,   144,   144,   146,   149,   150,
-     153,   153,   155,   155,   157,   160,   164,   165,   168,   169,
-     170,   171,   172,   173,   174,   175
+       0,    54,    54,    57,    58,    58,    59,    62,    62,    73,
+      76,    79,    80,    83,    84,    85,    86,    89,    89,    97,
+      97,   105,   106,   109,   109,   110,   111,   113,   113,   116,
+     116,   119,   120,   143,   143,   146,   146,   148,   151,   152,
+     155,   155,   157,   157,   159,   162,   166,   167,   170,   171,
+     172,   173,   174,   175,   176,   177
 };
 #endif
 
@@ -572,7 +572,7 @@ static const yytype_int8 yypact[] =
      -58,   -58,     5,    55,   -58,    58,     7,    14,   -58,   -58,
       35,   -58,    14,    14,   -58,   -58,    73,    55,   -58,     0,
       78,   -58,   -58,     0,    17,    18,   -58,     6,   -58,   -58,
-      30,    62,    73,    31,    14,    14,    14,    14,   -58,   -58,
+      30,    62,   -58,    31,    14,    14,    14,    14,   -58,   -58,
       58,   -10,   -10,   -58,   -58,   -58,   -58,    43,   -58,   -58,
      -58,   -58,   -58,    14,   -58,    -9,   -58,    -9,   -58,   -58,
      -58,   -58,    58,     7,    14,     7,    73,   -58,   -58,    44,
@@ -1475,21 +1475,21 @@ yyreduce:
         case 4:
 
 /* Line 1806 of yacc.c  */
-#line 56 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 58 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {dub_ajout_image_surface();}
     break;
 
   case 6:
 
 /* Line 1806 of yacc.c  */
-#line 57 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 59 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {}
     break;
 
   case 7:
 
 /* Line 1806 of yacc.c  */
-#line 60 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 62 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {
 							(yyval.ptr) = creer_variable((yyvsp[(1) - (2)].string), (yyvsp[(2) - (2)].string), NULL);
 							ajouter_variable_liste(lv, (yyval.ptr));
@@ -1500,7 +1500,7 @@ yyreduce:
   case 8:
 
 /* Line 1806 of yacc.c  */
-#line 65 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 67 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {									
 									set_value_variable(get_variable_queue(lv), (yyvsp[(4) - (4)].ptr));									
 									// printf("%s\n", toStringVariable($<ptr>$));
@@ -1510,65 +1510,65 @@ yyreduce:
   case 9:
 
 /* Line 1806 of yacc.c  */
-#line 71 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 73 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.ptr) = (yyvsp[(2) - (2)].ptr); 
-											imageToString((yyvsp[(2) - (2)].ptr));
+											// imageToString($<ptr>2);
 										}
     break;
 
   case 10:
 
 /* Line 1806 of yacc.c  */
-#line 74 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 76 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.ptr) = NULL;}
     break;
 
   case 11:
 
 /* Line 1806 of yacc.c  */
-#line 77 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 79 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.ptr) = malloc(sizeof(char)*30); sprintf((yyval.ptr), "%f", (yyvsp[(1) - (1)].reel));}
     break;
 
   case 12:
 
 /* Line 1806 of yacc.c  */
-#line 78 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 80 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.ptr) = NULL;}
     break;
 
   case 13:
 
 /* Line 1806 of yacc.c  */
-#line 81 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 83 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.string) = "image";}
     break;
 
   case 14:
 
 /* Line 1806 of yacc.c  */
-#line 82 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 84 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.string) = "chemin";}
     break;
 
   case 15:
 
 /* Line 1806 of yacc.c  */
-#line 83 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 85 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.string) = "point";}
     break;
 
   case 16:
 
 /* Line 1806 of yacc.c  */
-#line 84 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 86 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.string) = "reel";}
     break;
 
   case 17:
 
 /* Line 1806 of yacc.c  */
-#line 87 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 89 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {
 												dub_creation_image(); 
 												dub_creation_chemin(false);
@@ -1578,7 +1578,7 @@ yyreduce:
   case 18:
 
 /* Line 1806 of yacc.c  */
-#line 91 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 93 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {
 												(yyval.ptr) = dub_ajout_chemin_image();
 											}
@@ -1587,7 +1587,7 @@ yyreduce:
   case 19:
 
 /* Line 1806 of yacc.c  */
-#line 95 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 97 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {
 												dub_creation_image(); 
 												dub_creation_chemin(true);
@@ -1597,7 +1597,7 @@ yyreduce:
   case 20:
 
 /* Line 1806 of yacc.c  */
-#line 99 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 101 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {
 												(yyval.ptr) = dub_ajout_chemin_image();
 											}
@@ -1606,70 +1606,70 @@ yyreduce:
   case 21:
 
 /* Line 1806 of yacc.c  */
-#line 103 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 105 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.ptr) = (yyvsp[(1) - (1)].ptr);}
     break;
 
   case 22:
 
 /* Line 1806 of yacc.c  */
-#line 104 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 106 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.ptr) = (yyvsp[(1) - (2)].ptr);}
     break;
 
   case 23:
 
 /* Line 1806 of yacc.c  */
-#line 107 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 109 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {dub_ajout_image_surface();}
     break;
 
   case 26:
 
 /* Line 1806 of yacc.c  */
-#line 109 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 111 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {}
     break;
 
   case 27:
 
 /* Line 1806 of yacc.c  */
-#line 111 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 113 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {dub_creation_chemin(false);}
     break;
 
   case 28:
 
 /* Line 1806 of yacc.c  */
-#line 112 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 114 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.ptr) = NULL;}
     break;
 
   case 29:
 
 /* Line 1806 of yacc.c  */
-#line 114 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 116 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.ptr) = dub_creation_chemin(true);}
     break;
 
   case 30:
 
 /* Line 1806 of yacc.c  */
-#line 115 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 117 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.ptr) = NULL;}
     break;
 
   case 31:
 
 /* Line 1806 of yacc.c  */
-#line 117 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 119 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.ptr) = (yyvsp[(1) - (1)].ptr);}
     break;
 
   case 32:
 
 /* Line 1806 of yacc.c  */
-#line 118 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 120 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {
 												// if (est_dans_liste(lv, $<string>1))
 												// {
@@ -1696,42 +1696,42 @@ yyreduce:
   case 33:
 
 /* Line 1806 of yacc.c  */
-#line 141 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 143 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.ptr) = dub_creation_image();}
     break;
 
   case 35:
 
 /* Line 1806 of yacc.c  */
-#line 144 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 146 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.ptr) = 	dub_ajout_point_chemin((yyvsp[(2) - (3)].ptr));}
     break;
 
   case 39:
 
 /* Line 1806 of yacc.c  */
-#line 150 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 152 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {}
     break;
 
   case 40:
 
 /* Line 1806 of yacc.c  */
-#line 153 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 155 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {dub_ajout_point_chemin(somme_point((yyvsp[(3) - (4)].ptr), get_point_queue(get_liste_points_chemin(c))));}
     break;
 
   case 42:
 
 /* Line 1806 of yacc.c  */
-#line 155 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 157 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {ajouter_point_chemin(c, get_point_indice_chemin(c, 0));}
     break;
 
   case 45:
 
 /* Line 1806 of yacc.c  */
-#line 160 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 162 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.ptr) = dub_creation_point((yyvsp[(1) - (3)].reel), (yyvsp[(3) - (3)].reel), (yyvsp[(2) - (3)].booleen));
 												}
     break;
@@ -1739,70 +1739,70 @@ yyreduce:
   case 46:
 
 /* Line 1806 of yacc.c  */
-#line 164 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 166 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.booleen) = 1;}
     break;
 
   case 47:
 
 /* Line 1806 of yacc.c  */
-#line 165 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 167 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.booleen) = 0;}
     break;
 
   case 48:
 
 /* Line 1806 of yacc.c  */
-#line 168 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 170 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.reel) = (yyvsp[(2) - (3)].reel);}
     break;
 
   case 49:
 
 /* Line 1806 of yacc.c  */
-#line 169 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 171 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.reel) = -(yyvsp[(2) - (2)].reel);}
     break;
 
   case 50:
 
 /* Line 1806 of yacc.c  */
-#line 170 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 172 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.reel) = (yyvsp[(1) - (3)].reel) - (yyvsp[(3) - (3)].reel);}
     break;
 
   case 51:
 
 /* Line 1806 of yacc.c  */
-#line 171 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 173 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.reel) = (yyvsp[(1) - (3)].reel) + (yyvsp[(3) - (3)].reel);}
     break;
 
   case 52:
 
 /* Line 1806 of yacc.c  */
-#line 172 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 174 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.reel) = (yyvsp[(1) - (3)].reel) / (yyvsp[(3) - (3)].reel);}
     break;
 
   case 53:
 
 /* Line 1806 of yacc.c  */
-#line 173 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 175 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.reel) = (yyvsp[(1) - (3)].reel) * (yyvsp[(3) - (3)].reel);}
     break;
 
   case 54:
 
 /* Line 1806 of yacc.c  */
-#line 174 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 176 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {(yyval.reel) = (yyvsp[(1) - (1)].reel);}
     break;
 
   case 55:
 
 /* Line 1806 of yacc.c  */
-#line 175 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 177 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
     {
 													if (est_dans_liste(lv, (yyvsp[(1) - (1)].string)))
 													{
@@ -1826,7 +1826,7 @@ yyreduce:
 
 
 /* Line 1806 of yacc.c  */
-#line 1830 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/y.tab.c"
+#line 1830 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/y.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2057,6 +2057,6 @@ yyreturn:
 
 
 /* Line 2067 of yacc.c  */
-#line 196 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 198 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
 
 

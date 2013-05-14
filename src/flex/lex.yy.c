@@ -1,6 +1,6 @@
-#line 2 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/lex.yy.c"
+#line 2 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/lex.yy.c"
 
-#line 4 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/lex.yy.c"
+#line 4 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/lex.yy.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -424,7 +424,7 @@ static yyconst flex_int32_t yy_ec[256] =
 static yyconst flex_int32_t yy_meta[38] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    2,    2,    2,    2,
+        1,    1,    2,    1,    1,    1,    2,    2,    2,    2,
         2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
         2,    2,    2,    2,    2,    1,    1
     } ;
@@ -499,13 +499,13 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
-#line 2 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 1 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
+#line 2 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 #include "y.tab.h"
 #define YY_NO_INPUT
 
 int fileno();
-#line 509 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/lex.yy.c"
+#line 509 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/lex.yy.c"
 
 #define INITIAL 0
 
@@ -690,9 +690,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 17 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 17 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 
-#line 696 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/lex.yy.c"
+#line 696 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/lex.yy.c"
 
 	if ( !(yy_init) )
 		{
@@ -778,152 +778,152 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 18 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 18 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 20 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 20 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {yylval.reel = atof(yytext);
 				return DIGIT;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 23 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 23 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {return VAR;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 24 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 24 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {return CHEMIN;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 25 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 25 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {return POINT_C;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 26 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 26 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {return REEL;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 27 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 27 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {return CYCLE;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 28 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 28 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {return DRAW;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 29 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 29 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {return FILL;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 30 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 30 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {return IMG;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 32 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 32 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {yylval.string = yytext;
 				return ID;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 35 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 35 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {return OPEN;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 36 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 36 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {return CLOSE;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 37 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 37 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {return PAR_OP;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 38 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 38 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {return PAR_CLO;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 39 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 39 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {return PLUS;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 40 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 40 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {return MINUS;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 41 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 41 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {return PROD;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 42 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 42 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {return DIV;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 43 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 43 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {return EGAL;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 45 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 45 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {return EQUAL;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 47 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 47 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {return DOUBLE;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 48 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 48 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {return COMMA;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 50 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 50 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {return TERM;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 52 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 52 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {return SEP_P;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 54 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 54 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {return POINT;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 56 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 56 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 57 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 57 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 {}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 59 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 59 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 ECHO;
 	YY_BREAK
-#line 927 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/lex.yy.c"
+#line 927 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1884,7 +1884,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 59 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/flex/dubla.l"
+#line 59 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/flex/dubla.l"
 
 
 

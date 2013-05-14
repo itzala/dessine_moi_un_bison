@@ -74,7 +74,7 @@ typedef union YYSTYPE
 {
 
 /* Line 2068 of yacc.c  */
-#line 18 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/dubla.y"
+#line 18 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/dubla.y"
 
 	void* ptr;
 	double reel;
@@ -84,7 +84,7 @@ typedef union YYSTYPE
 
 
 /* Line 2068 of yacc.c  */
-#line 88 "/home/nendredi/Projets/version_finale/dessine_moi_un_bison/src/bison/y.tab.h"
+#line 88 "/net/cremi/nendredi/projets/dessine_moi_un_bison/src/bison/y.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

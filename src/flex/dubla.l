@@ -12,7 +12,7 @@ entier			[[:digit:]]+
 
 reel			{entier}("."{entier})?
 
-identifiant 	[[:alpha:]_]+
+identifiant 	[[:alpha:]_][[:alnum:]_]*
 
 %%
 {blanks}		{}
